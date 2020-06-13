@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="search-bar-container">
-      <input type="text" class="search-bar" placeholder="Find a city" />
+      <form @submit.prevent="$emit('getSearchedDataFunction', $event)">
+        <input type="text" class="search-bar" placeholder="Find a city" />
+      </form>
     </div>
   </div>
 </template>
@@ -18,20 +20,21 @@ export default {};
 }
 
 .search-bar {
-    background: none;
-    border: #c26146 1px solid;
-    padding: 5px;
-    border-radius: 0 10px 0 10px;
-    transition: all ease 0.3s;
+  background: none;
+  border: #c26146 1px solid;
+  padding: 5px;
+  border-radius: 0 10px 0 10px;
+  transition: all ease 0.3s;
+  color: white;
 }
 
 .search-bar:focus {
-    outline: none;
-    border-color: white;
+  outline: none;
+  border-color: white;
 }
 
 .search-bar::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 </style>

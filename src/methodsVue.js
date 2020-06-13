@@ -11,8 +11,12 @@ export const methodsVue = {
         const data = await res.json();
         this.setData(data);
     },
-    async getSearchedData() {
-        // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
+    async getSearchedData(e) {
+        console.log(e.target.firstChild.value)
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${e.target.firstChild.value}&appid=${this.API_KEY}&units=metric`);
+        const data = await res.json();
+        console.log(data)
+       this.setData(data)
     },
     setData(data) {
         // console.log(data);
