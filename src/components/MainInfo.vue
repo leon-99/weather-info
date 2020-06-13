@@ -2,31 +2,47 @@
   <div>
     <div class="main-info-container">
       <div class="city-name-container">
-        <h3>
+        <div class="spinner-border" role="status" v-if="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <h3 v-if="infoTexts">
           <span>{{ city }}</span>
           , {{ country }}
         </h3>
       </div>
       <div class="icon-container">
-        <i class="owf owf-4x" :class="iconId"></i>
-        <h4 class="__my2">{{ condition }}</h4>
-        <h5>{{ conditionDes }}</h5>
+        <div class="spinner-border" role="status" v-if="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <i class="owf owf-4x" :class="iconId" v-if="infoTexts"></i>
+        <h4 class="__my2" v-if="infoTexts">{{ condition }}</h4>
+        <h5 v-if="infoTexts">{{ conditionDes }}</h5>
       </div>
       <div class="main-temp-container">
         <div class="main-temp">
-          <h2>
-            <span>{{mainTemp}}</span>℃
+          <div class="spinner-border" role="status" v-if="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <h2 v-if="infoTexts" class="main-temp">
+            <span class="__fonted-text">{{mainTemp}}</span>&#8451;
           </h2>
-          <h5 class="__my2">
+          <h5 class="__my2" v-if="infoTexts">
             Feels like
             <span>{{ feelsLikeTemp }}</span>℃
           </h5>
         </div>
+        <div class="spinner-border" role="status" v-if="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
         <div class="max-min-temp">
-          <p>
+          <p v-if="infoTexts">
             Max
-            <span><span>{{ maxTemp }}</span> ℃</span> / Min
-            <span><span>{{ minTemp }}</span> ℃</span>
+            <span>
+              <span>{{ maxTemp }}</span> ℃
+            </span> / Min
+            <span>
+              <span>{{ minTemp }}</span> ℃
+            </span>
           </p>
         </div>
       </div>
@@ -46,12 +62,15 @@ export default {
     "feelsLikeTemp",
     "maxTemp",
     "minTemp",
-    "iconId"
+    "iconId",
+    "loading",
+    "infoTexts"
   ]
 };
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 .main-info-container {
   display: flex;
   flex-direction: column;
@@ -67,12 +86,25 @@ export default {
 }
 
 .icon-container {
-    margin-bottom: 50px;
-    margin-top: 50px;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .__my2 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.spinner-border {
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+
+.__fonted-text {
+  font-family: "Sriracha", cursive;
+}
+
+.main-temp {
+  font-size: 50px;
 }
 </style>

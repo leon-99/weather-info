@@ -12,14 +12,19 @@ export const methodsVue = {
         this.setData(data);
     },
     async getSearchedData(e) {
-        console.log(e.target.firstChild.value)
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${e.target.firstChild.value}&appid=${this.API_KEY}&units=metric`);
-        const data = await res.json();
-        console.log(data)
-       this.setData(data)
+        if (e.target.firstChild.value) {
+            this.infoTexts = false;
+            this.loading = true;
+            console.log(e.target.firstChild.value)
+            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${e.target.firstChild.value}&appid=${this.API_KEY}&units=metric`);
+            const data = await res.json();
+            this.setData(data)
+        }
     },
     setData(data) {
         // console.log(data);
+        this.loading = false;
+        this.infoTexts = true;
         const time = new Date();
         if (time.getHours() > 7 && time.getHours() < 18) this.iconId = `owf-${data.weather[0].id}-d`;
         else this.iconId = `owf-${data.weather[0].id}-n`;

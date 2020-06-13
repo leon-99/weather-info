@@ -19,6 +19,8 @@
               :maxTemp="this.maxTemp"
               :minTemp="this.minTemp"
               :iconId="this.iconId"
+              :loading="this.loading"
+              :infoTexts="this.infoTexts"
             />
           </div>
         </div>
