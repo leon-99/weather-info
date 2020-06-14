@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-container">
+  <div id="app" class="bg-container" :class="bgImage">
     <div class="main">
       <div class="container">
         <div class="row">

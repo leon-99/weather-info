@@ -6,8 +6,8 @@
           <span class="sr-only">Loading...</span>
         </div>
         <h3 v-if="infoTexts">
-          <span>{{ city }}</span>
-          , {{ country }}
+          <span>{{ city }}</span>,
+          <span>{{ country }}</span>
         </h3>
       </div>
       <div class="icon-container">
@@ -70,7 +70,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 .main-info-container {
   display: flex;
   flex-direction: column;
@@ -79,31 +78,22 @@ export default {
   margin-top: 50px;
   color: white;
 }
-
 .icon-container {
   margin-bottom: 20px;
   margin-top: 10px;
 }
-
 .icon-container {
   margin-bottom: 50px;
   margin-top: 50px;
 }
-
 .__my2 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 .spinner-border {
   margin-top: 30px;
   margin-bottom: 35px;
 }
-
-.__fonted-text {
-  font-family: "Sriracha", cursive;
-}
-
 .main-temp {
   font-size: 50px;
 }

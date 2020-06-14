@@ -16,5 +16,6 @@ export const dataVue = {
     humidity: '',
     pressure: '',
     visibility: '',
-    dewPoint: ''
+    dewPoint: '',
+    bgImage: null
 }

@@ -18,7 +18,6 @@ export default {};
   display: flex;
   justify-content: center;
 }
-
 .search-bar {
   background: none;
   border: #c26146 1px solid;
@@ -26,13 +25,12 @@ export default {};
   border-radius: 0 10px 0 10px;
   transition: all ease 0.3s;
   color: white;
+  text-align: center;
 }
-
 .search-bar:focus {
   outline: none;
   border-color: white;
 }
-
 .search-bar::placeholder {
   color: rgba(255, 255, 255, 0.5);
   text-align: center;

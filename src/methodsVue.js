@@ -22,7 +22,7 @@ export const methodsVue = {
         }
     },
     setData(data) {
-        // console.log(data);
+        console.log(data);
         this.loading = false;
         this.infoTexts = true;
         const time = new Date();
@@ -39,8 +39,31 @@ export const methodsVue = {
         this.clouds = data.clouds.all;
         this.humidity = data.main.humidity;
         this.pressure = data.main.pressure;
-        this.visibility = data.visibility / 1000;
         this.dewPoint = 'N/A';
         this.uvi = 'N/A';
+        if (!(data.visibility)) this.visibility = 'N/A';
+        else this.visibility = `${Math.round(data.visibility / 1000)}km`;
+        this.setBg(data);
+    },
+    setBg(data) {
+        let id = data.weather[0].id;
+        let t = new Date();
+        if (t.getHours() >= 6 && t.getHours() <= 18) {
+            if (id >= 200 && id <= 531) {
+                this.bgImage = 'rain-d'
+            } else if (id >= 803 && id <= 804) {
+                this.bgImage = 'cloudy-d'
+            } else {
+                this.bgImage = 'clear-d'
+            }
+        } else {
+            if (id >= 200 && id <= 531) {
+                this.bgImage = 'rain-n'
+            } else if (id >= 803 && id <= 804) {
+                this.bgImage = 'cloudy-n'
+            } else {
+                this.bgImage = 'clear-n'
+            }
+        }
     }
 }
