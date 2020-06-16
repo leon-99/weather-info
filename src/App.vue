@@ -21,6 +21,7 @@
               :iconId="this.iconId"
               :loading="this.loading"
               :infoTexts="this.infoTexts"
+              :localTime="this.localTime"
             />
           </div>
         </div>

@@ -68,5 +68,6 @@ export default {
     padding: 10px 25px;
     border-radius: 10px;
     min-height: 100px;
+    font-size: large;
 }
 </style>

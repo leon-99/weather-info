@@ -5,10 +5,11 @@
         <div class="spinner-border" role="status" v-if="loading">
           <span class="sr-only">Loading...</span>
         </div>
-        <h3 v-if="infoTexts">
+        <h3 v-if="infoTexts" class="city-name">
           <span>{{ city }}</span>,
           <span>{{ country }}</span>
         </h3>
+        <h5>{{ localTime }}</h5>
       </div>
       <div class="icon-container">
         <div class="spinner-border" role="status" v-if="loading">
@@ -64,7 +65,8 @@ export default {
     "minTemp",
     "iconId",
     "loading",
-    "infoTexts"
+    "infoTexts",
+    "localTime"
   ]
 };
 </script>
@@ -96,5 +98,8 @@ export default {
 }
 .main-temp {
   font-size: 50px;
+}
+.city-name {
+  margin-bottom: 20px;
 }
 </style>

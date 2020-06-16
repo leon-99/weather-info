@@ -1,5 +1,6 @@
 export const dataVue = {
     API_KEY: '63a2f24719ef86545f85b8348fabd7c8',
+    localTime: null, 
     infoTexts: false,
     loading: true,
     iconId: null,

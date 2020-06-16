@@ -21,12 +21,25 @@ export const methodsVue = {
             this.setData(data)
         }
     },
+    calcTime(offset) {
+        const d = new Date();
+        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        const nd = new Date(utc + (3600000*offset));
+        return {
+            hours: nd.getHours(),
+            minutes: nd.getMinutes(),
+            seconds: nd.getSeconds(),
+            timeStr: nd.toTimeString().slice(0, 5)
+        }
+    },
     setData(data) {
         console.log(data);
         this.loading = false;
         this.infoTexts = true;
-        const time = new Date();
-        if (time.getHours() > 7 && time.getHours() < 18) this.iconId = `owf-${data.weather[0].id}-d`;
+        const time = this.calcTime((data.timezone / 60) / 60 );
+        this.localTime = time.timeStr;
+        console.log(time);
+        if (time.hours > 7 && time.hours < 18) this.iconId = `owf-${data.weather[0].id}-d`;
         else this.iconId = `owf-${data.weather[0].id}-n`;
         this.city = data.name;
         this.country = data.sys.country;
@@ -46,9 +59,9 @@ export const methodsVue = {
         this.setBg(data);
     },
     setBg(data) {
+        const time = this.calcTime((data.timezone / 60) / 60)
         let id = data.weather[0].id;
-        let t = new Date();
-        if (t.getHours() >= 6 && t.getHours() <= 18) {
+        if (time.hours >= 7 && time.hours <= 18) {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-d'
             } else if (id >= 803 && id <= 804) {

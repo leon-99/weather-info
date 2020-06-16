@@ -1,6 +1,6 @@
 .bg-container {
     /* background-image: url('../bg-images/rain-n.jpg'); */
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
     background-attachment: fixed;
     background-position: center center;
