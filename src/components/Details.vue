@@ -24,7 +24,7 @@
       <div class="details-info-line-3">
         <div class="visibility-container detail-containers">
           <p>Visibility</p>
-          <p>{{ visibility }}</p>
+          <p class="visibility-data">{{ visibility }}</p>
         </div>
         <div class="dew-container detail-containers">
           <p>Dew Point</p>
@@ -69,5 +69,11 @@ export default {
     border-radius: 10px;
     min-height: 100px;
     font-size: large;
+}
+
+@media screen and (max-width: 396px) {
+  .visibility-data {
+    margin-top: 40px;
+  }
 }
 </style>

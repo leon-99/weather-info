@@ -1,3 +1,4 @@
+import { countryCodes } from "./countryCodes";
 export const methodsVue = {
     locateUserPosttion() {
         if (navigator.geolocation) {
@@ -17,14 +18,18 @@ export const methodsVue = {
             this.loading = true;
             console.log(e.target.firstChild.value)
             const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${e.target.firstChild.value}&appid=${this.API_KEY}&units=metric`);
-            const data = await res.json();
-            this.setData(data)
+            if (res.ok === true) {
+                const data = await res.json();
+                this.setData(data);
+            } else {
+                this.showNotFound();
+            }
         }
     },
     calcTime(offset) {
         const d = new Date();
         const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-        const nd = new Date(utc + (3600000*offset));
+        const nd = new Date(utc + (3600000 * offset));
         return {
             hours: nd.getHours(),
             minutes: nd.getMinutes(),
@@ -36,13 +41,13 @@ export const methodsVue = {
         console.log(data);
         this.loading = false;
         this.infoTexts = true;
-        const time = this.calcTime((data.timezone / 60) / 60 );
+        const time = this.calcTime((data.timezone / 60) / 60);
         this.localTime = time.timeStr;
         console.log(time);
         if (time.hours > 7 && time.hours < 18) this.iconId = `owf-${data.weather[0].id}-d`;
         else this.iconId = `owf-${data.weather[0].id}-n`;
         this.city = data.name;
-        this.country = data.sys.country;
+        this.country = countryCodes.find(i => i.Code === data.sys.country).Name;
         this.condition = data.weather[0].main;
         this.conditionDes = data.weather[0].description;
         this.mainTemp = Math.round(data.main.temp);
@@ -78,5 +83,10 @@ export const methodsVue = {
                 this.bgImage = 'clear-n'
             }
         }
+    },
+    showNotFound () {
+        this.loading = false;
+        this.infoTexts = true;
+        this.country = "Not Found!"
     }
 }
