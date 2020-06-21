@@ -10,6 +10,7 @@
         <div class="row">
           <div class="col-12 text-center">
             <MainInfo
+            @changeDegreeFunction="changeDegree"
               :city="this.city"
               :country="this.country"
               :condition="this.condition"
@@ -22,6 +23,7 @@
               :loading="this.loading"
               :infoTexts="this.infoTexts"
               :localTime="this.localTime"
+              :degreeSymbol="this.degreeSymbol"
             />
           </div>
         </div>
@@ -34,6 +36,7 @@
               :pressure="this.pressure"
               :visibility="this.visibility"
               :dewPoint="this.dewPoint"
+              :detailDataTexts="this.detailDataTexts"
             />
           </div>
         </div>
@@ -66,7 +69,8 @@ export default {
 </script>
 
 <style>
-@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
 @import "./assets/css/owfont-regular.min.css";
 @import "./assets/css/styles.css";
 </style>

@@ -4,31 +4,32 @@
       <div class="details-info-line-1">
         <div class="clouds-container detail-containers">
           <p>Clouds</p>
-          <p>{{ clouds }}%</p>
+          <p v-if="detailDataTexts">{{ clouds }}%</p>
         </div>
         <div class="humid-container detail-containers">
+           <i class="fas fa-map-marker-alt"></i>
           <p>UV Index</p>
-          <p>{{ uvi }}</p>
+          <p v-if="detailDataTexts">{{ uvi }}</p>
         </div>
       </div>
       <div class="details-info-line-2">
         <div class="uvi-container detail-containers">
           <p>Humidity</p>
-          <p>{{ humidity }}%</p>
+          <p v-if="detailDataTexts">{{ humidity }}%</p>
         </div>
         <div class="pressure-container detail-containers">
           <p>Pressure</p>
-          <p>{{ pressure }}mb</p>
+          <p v-if="detailDataTexts">{{ pressure }}mb</p>
         </div>
       </div>
       <div class="details-info-line-3">
         <div class="visibility-container detail-containers">
           <p>Visibility</p>
-          <p class="visibility-data">{{ visibility }}</p>
+          <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
         </div>
         <div class="dew-container detail-containers">
           <p>Dew Point</p>
-          <p>{{ dewPoint }}</p>
+          <p v-if="detailDataTexts">{{ dewPoint }}</p>
         </div>
       </div>
     </div>
@@ -38,7 +39,7 @@
 <script>
 export default {
   name: "Details",
-  props: ['clouds', 'uvi', 'humidity', 'pressure', 'visibility', 'dewPoint']
+  props: ['clouds', 'uvi', 'humidity', 'pressure', 'visibility', 'dewPoint', 'detailDataTexts']
 };
 </script>
 

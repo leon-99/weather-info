@@ -10,6 +10,7 @@ export const dataVue = {
     maxTemp: null,
     minTemp: null,
     feelsLikeTemp: null,
+    degreeSymbol: '℃',
     condition: null,
     conditionDes: null,
     clouds: '',
@@ -18,5 +19,6 @@ export const dataVue = {
     pressure: '',
     visibility: '',
     dewPoint: '',
-    bgImage: null
+    bgImage: 'cloudy-n',
+    detailDataTexts: true,
 }

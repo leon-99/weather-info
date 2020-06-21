@@ -24,12 +24,12 @@
           <div class="spinner-border" role="status" v-if="loading">
             <span class="sr-only">Loading...</span>
           </div>
-          <h2 v-if="infoTexts" class="main-temp">
-            <span class="__fonted-text">{{mainTemp}}</span>&#8451;
+          <h2 v-if="infoTexts" class="main-temp" @click="$emit('changeDegreeFunction')">
+            <span >{{mainTemp}}</span><span>{{ degreeSymbol }}</span>
           </h2>
           <h5 class="__my2" v-if="infoTexts">
             Feels like
-            <span>{{ feelsLikeTemp }}</span>℃
+            <span>{{ feelsLikeTemp }}</span><span>{{ degreeSymbol }}</span>
           </h5>
         </div>
         <div class="spinner-border" role="status" v-if="loading">
@@ -39,10 +39,10 @@
           <p v-if="infoTexts">
             Max
             <span>
-              <span>{{ maxTemp }}</span> ℃
+              <span>{{ maxTemp }}</span><span>{{ degreeSymbol }}</span>
             </span> / Min
             <span>
-              <span>{{ minTemp }}</span> ℃
+              <span>{{ minTemp }}</span><span>{{ degreeSymbol }}</span>
             </span>
           </p>
         </div>
@@ -66,7 +66,8 @@ export default {
     "iconId",
     "loading",
     "infoTexts",
-    "localTime"
+    "localTime",
+    "degreeSymbol"
   ]
 };
 </script>

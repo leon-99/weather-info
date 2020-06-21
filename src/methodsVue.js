@@ -1,4 +1,7 @@
-import { countryCodes } from "./countryCodes";
+import {
+    countryCodes
+} from "./countryCodes";
+import { tempConverter } from "./temp-converter";
 export const methodsVue = {
     locateUserPosttion() {
         if (navigator.geolocation) {
@@ -22,7 +25,7 @@ export const methodsVue = {
                 const data = await res.json();
                 this.setData(data);
             } else {
-                this.showNotFound();
+                this.showNotFound(e);
             }
         }
     },
@@ -30,21 +33,16 @@ export const methodsVue = {
         const d = new Date();
         const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
         const nd = new Date(utc + (3600000 * offset));
-        return {
-            hours: nd.getHours(),
-            minutes: nd.getMinutes(),
-            seconds: nd.getSeconds(),
-            timeStr: nd.toTimeString().slice(0, 5)
-        }
+        return nd
     },
     setData(data) {
         console.log(data);
         this.loading = false;
         this.infoTexts = true;
         const time = this.calcTime((data.timezone / 60) / 60);
-        this.localTime = time.timeStr;
+        this.localTime = time.toTimeString().slice(0, 5);
         console.log(time);
-        if (time.hours > 7 && time.hours < 18) this.iconId = `owf-${data.weather[0].id}-d`;
+        if (time.getHours > 7 && time.getHours < 18) this.iconId = `owf-${data.weather[0].id}-d`;
         else this.iconId = `owf-${data.weather[0].id}-n`;
         this.city = data.name;
         this.country = countryCodes.find(i => i.Code === data.sys.country).Name;
@@ -66,7 +64,7 @@ export const methodsVue = {
     setBg(data) {
         const time = this.calcTime((data.timezone / 60) / 60)
         let id = data.weather[0].id;
-        if (time.hours >= 7 && time.hours <= 18) {
+        if (time.getHours >= 7 && time.getHours <= 18) {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-d'
             } else if (id >= 803 && id <= 804) {
@@ -84,9 +82,35 @@ export const methodsVue = {
             }
         }
     },
-    showNotFound () {
+    changeDegree() {
+        if (this.degreeSymbol === '℃') {
+            this.mainTemp = tempConverter.CtoF(this.mainTemp);
+            this.maxTemp = tempConverter.CtoF(this.maxTemp);
+            this.minTemp = tempConverter.CtoF(this.minTemp);
+            this.feelsLikeTemp = tempConverter.CtoF(this.feelsLikeTemp);
+            this.degreeSymbol = '℉';
+        } else {
+            this.mainTemp = tempConverter.FtoC(this.mainTemp);
+            this.maxTemp = tempConverter.FtoC(this.maxTemp);
+            this.minTemp = tempConverter.FtoC(this.minTemp);
+            this.feelsLikeTemp = tempConverter.FtoC(this.feelsLikeTemp);
+            this.degreeSymbol = '℃';
+        }
+        // ℃ ℉
+    },
+    showNotFound(e) {
         this.loading = false;
         this.infoTexts = true;
         this.country = "Not Found!"
+        this.city = e.target.firstChild.value;
+        this.localTime = '';
+        this.condition = '';
+        this.conditionDes = '';
+        this.mainTemp = '';
+        this.maxTemp = '';
+        this.minTemp = '';
+        this.feelsLikeTemp = '';
+        this.iconId = '';
+       this.detailDataTexts = false;
     }
 }
