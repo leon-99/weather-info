@@ -57,6 +57,14 @@
     background-image: url('../bg-images/rain-n.jpg');
 }
 
+.foggy-d {
+    background-image: url('../bg-images/foggy-d.jpg');
+}
+
+.foggy-n {
+    background-image: url('../bg-images/foggy-n.jpg');
+}
+
 .snow-d {
     background-image: url('../bg-images/snow-d.jpg');
 }
@@ -66,10 +74,6 @@
 }
 
 @media (min-width: 768px) {
-    .bg-container {
-        background-blend-mode: multiply;
-    }
-
     .clear-d {
         background-image: url('../bg-images/clear-d-desktop.jpg');
     }
@@ -100,5 +104,13 @@
 
     .snow-n {
         background-image: url('../bg-images/snow-n-desktop.jpg');
+    }
+
+    .foggy-d {
+        background-image: url('../bg-images/foggy-d-desktop.jpg');
+    }
+
+    .foggy-n {
+        background-image: url('../bg-images/foggy-n-desktop.jpg');
     }
 }

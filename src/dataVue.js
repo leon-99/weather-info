@@ -19,6 +19,6 @@ export const dataVue = {
     pressure: '',
     visibility: '',
     dewPoint: '',
-    bgImage: 'snow-d',
+    bgImage: 'foggy-n',
     detailDataTexts: true,
 }

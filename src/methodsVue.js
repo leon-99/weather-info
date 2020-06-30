@@ -21,7 +21,7 @@ export const methodsVue = {
         if (e.target.firstChild.value) {
             this.infoTexts = false;
             this.loading = true;
-            console.log(e.target.firstChild.value)
+            console.log(e.target.firstChild.value) // console.log
             const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${e.target.firstChild.value}&appid=${this.API_KEY}&units=metric`);
             if (res.ok === true) {
                 const data = await res.json();
@@ -38,12 +38,12 @@ export const methodsVue = {
         return nd
     },
     setData(data) {
-        console.log(data);
+        console.log(data); // console.log
         this.loading = false;
         this.infoTexts = true;
         const time = this.calcTime((data.timezone / 60) / 60);
         this.localTime = time.toTimeString().slice(0, 5);
-        console.log(time);
+        console.log(time); // console.log
         if (time.getHours() > 7 && time.getHours() < 18) this.iconId = `owf-${data.weather[0].id}-d`;
         else this.iconId = `owf-${data.weather[0].id}-n`;
         this.city = data.name;
@@ -61,15 +61,17 @@ export const methodsVue = {
         this.uvi = 'N/A';
         if (!(data.visibility)) this.visibility = 'N/A';
         else this.visibility = `${Math.round(data.visibility / 1000)}km`;
-        this.setBg(data);
+        // this.setBg(data);
     },
     setBg(data) {
         const time = this.calcTime((data.timezone / 60) / 60)
         let id = data.weather[0].id;
-        console.log(id)
+        console.log(id) // console.log
         if (time.getHours() >= 7 && time.getHours() <= 18) {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-d'
+            } else if (id === 701 || id === 711 || id === 721 || id === 741) {
+                this.bgImage = 'foggy-d'
             } else if (id >= 600 && id <= 622) {
                 this.bgImage = 'snow-d'
             } else if (id >= 803 && id <= 804) {
@@ -80,6 +82,8 @@ export const methodsVue = {
         } else {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-n'
+            } else if (id === 701 || id === 711 || id === 721 || id === 741) {
+                this.bgImage = 'foggy-d'
             } else if (id >= 600 && id <= 622) {
                 this.bgImage = 'snow-n'
             } else if (id >= 803 && id <= 804) {
