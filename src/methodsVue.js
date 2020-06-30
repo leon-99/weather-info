@@ -1,7 +1,9 @@
 import {
     countryCodes
 } from "./countryCodes";
-import { tempConverter } from "./temp-converter";
+import {
+    tempConverter
+} from "./temp-converter";
 export const methodsVue = {
     locateUserPosttion() {
         if (navigator.geolocation) {
@@ -42,7 +44,7 @@ export const methodsVue = {
         const time = this.calcTime((data.timezone / 60) / 60);
         this.localTime = time.toTimeString().slice(0, 5);
         console.log(time);
-        if (time.getHours > 7 && time.getHours < 18) this.iconId = `owf-${data.weather[0].id}-d`;
+        if (time.getHours() > 7 && time.getHours() < 18) this.iconId = `owf-${data.weather[0].id}-d`;
         else this.iconId = `owf-${data.weather[0].id}-n`;
         this.city = data.name;
         this.country = countryCodes.find(i => i.Code === data.sys.country).Name;
@@ -64,9 +66,12 @@ export const methodsVue = {
     setBg(data) {
         const time = this.calcTime((data.timezone / 60) / 60)
         let id = data.weather[0].id;
-        if (time.getHours >= 7 && time.getHours <= 18) {
+        console.log(id)
+        if (time.getHours() >= 7 && time.getHours() <= 18) {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-d'
+            } else if (id >= 600 && id <= 622) {
+                this.bgImage = 'snow-d'
             } else if (id >= 803 && id <= 804) {
                 this.bgImage = 'cloudy-d'
             } else {
@@ -75,6 +80,8 @@ export const methodsVue = {
         } else {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-n'
+            } else if (id >= 600 && id <= 622) {
+                this.bgImage = 'snow-n'
             } else if (id >= 803 && id <= 804) {
                 this.bgImage = 'cloudy-n'
             } else {
@@ -111,6 +118,6 @@ export const methodsVue = {
         this.minTemp = '';
         this.feelsLikeTemp = '';
         this.iconId = '';
-       this.detailDataTexts = false;
+        this.detailDataTexts = false;
     }
 }

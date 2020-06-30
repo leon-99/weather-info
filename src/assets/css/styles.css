@@ -1,56 +1,104 @@
 .bg-container {
-    /* background-image: url('../bg-images/rain-n.jpg'); */
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode: multiply;
+    min-height: 100vh;
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
     transition: all ease 0.3s;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
 }
+
 .clear-d {
     background-image: url('../bg-images/clear-d.jpg');
 }
+
 .clear-n {
     background-image: url('../bg-images/clear-n.jpg');
 }
+
 .cloudy-d {
     background-image: url('../bg-images/cloudy-d.jpg');
-} 
+}
+
+.clear-d {
+    background-image: url('../bg-images/clear-d.jpg');
+}
+
+.clear-n {
+    background-image: url('../bg-images/clear-n.jpg');
+}
+
+.cloudy-d {
+    background-image: url('../bg-images/cloudy-d.jpg');
+}
+
 .cloudy-n {
     background-image: url('../bg-images/cloudy-n.jpg');
 }
+
 .rain-d {
     background-image: url('../bg-images/rain-d.jpg');
 }
+
 .rain-n {
     background-image: url('../bg-images/rain-n.jpg');
 }
-@media only screen and (min-width: 768px) {
+
+.cloudy-n {
+    background-image: url('../bg-images/cloudy-n.jpg');
+}
+
+.rain-d {
+    background-image: url('../bg-images/rain-d.jpg');
+}
+
+.rain-n {
+    background-image: url('../bg-images/rain-n.jpg');
+}
+
+.snow-d {
+    background-image: url('../bg-images/snow-d.jpg');
+}
+
+.snow-n {
+    background-image: url('../bg-images/snow-n.jpg');
+}
+
+@media (min-width: 768px) {
     .bg-container {
-        /* background-image: url('../bg-images/rain-n-desktop.jpg'); */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-blend-mode: multiply;
     }
+
     .clear-d {
         background-image: url('../bg-images/clear-d-desktop.jpg');
     }
+
     .clear-n {
         background-image: url('../bg-images/clear-n-desktop.jpg');
     }
+
     .cloudy-d {
         background-image: url('../bg-images/cloudy-d-desktop.jpg');
     }
+
     .cloudy-n {
         background-image: url('../bg-images/cloudy-n-desktop.jpg');
     }
+
     .rain-d {
         background-image: url('../bg-images/rain-d-desktop.jpg');
     }
+
     .rain-n {
         background-image: url('../bg-images/rain-n-desktop.jpg');
+    }
+
+    .snow-d {
+        background-image: url('../bg-images/snow-d-desktop.jpg');
+    }
+
+    .snow-n {
+        background-image: url('../bg-images/snow-n-desktop.jpg');
     }
 }
