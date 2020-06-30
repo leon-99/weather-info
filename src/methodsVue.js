@@ -61,7 +61,7 @@ export const methodsVue = {
         this.uvi = 'N/A';
         if (!(data.visibility)) this.visibility = 'N/A';
         else this.visibility = `${Math.round(data.visibility / 1000)}km`;
-        // this.setBg(data);
+        this.setBg(data);
     },
     setBg(data) {
         const time = this.calcTime((data.timezone / 60) / 60)
