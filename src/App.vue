@@ -14,7 +14,6 @@
               :city="this.city"
               :country="this.country"
               :condition="this.condition"
-              :conditionDes="this.conditionDes"
               :mainTemp="this.mainTemp"
               :feelsLikeTemp="this.feelsLikeTemp"
               :maxTemp="this.maxTemp"
@@ -36,6 +35,8 @@
               :pressure="this.pressure"
               :visibility="this.visibility"
               :dewPoint="this.dewPoint"
+              :aqi="this.aqi"
+              :slp="this.slp"
               :detailDataTexts="this.detailDataTexts"
             />
           </div>

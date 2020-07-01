@@ -17,7 +17,6 @@
         </div>
         <i class="owf owf-4x" :class="iconId" v-if="infoTexts"></i>
         <h4 class="__my2" v-if="infoTexts">{{ condition }}</h4>
-        <h5 v-if="infoTexts">{{ conditionDes }}</h5>
       </div>
       <div class="main-temp-container">
         <div class="main-temp">
@@ -58,7 +57,6 @@ export default {
     "city",
     "country",
     "condition",
-    "conditionDes",
     "mainTemp",
     "feelsLikeTemp",
     "maxTemp",

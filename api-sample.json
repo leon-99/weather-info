@@ -1,43 +1,45 @@
 {
-    "coord": {
-        "lon": 96.04,
-        "lat": 16.88
-    },
-    "weather": [
-        {
-            "id": 802,
-            "main": "Clouds",
-            "description": "scattered clouds",
-            "icon": "03d"
-        }
-    ],
-    "base": "stations",
-    "main": {
-        "temp": 305.15,
-        "feels_like": 309.3,
-        "temp_min": 305.15,
-        "temp_max": 305.15,
-        "pressure": 1005,
-        "humidity": 66
-    },
-    "visibility": 7000,
-    "wind": {
-        "speed": 3.1,
-        "deg": 20
-    },
-    "clouds": {
-        "all": 40
-    },
-    "dt": 1592027594,
-    "sys": {
-        "type": 1,
-        "id": 9322,
-        "country": "MM",
-        "sunrise": 1592002936,
-        "sunset": 1592050184
-    },
-    "timezone": 23400,
-    "id": 1481709,
-    "name": "Mithwegon",
-    "cod": 200
+    "data": [{
+        "rh": 86.5,
+        "pod": "n",
+        "lon": -100.94167,
+        "pres": 801.227,
+        "timezone": "America\/Mexico_City",
+        "ob_time": "2020-07-01 08:04",
+        "country_code": "MX",
+        "clouds": 100,
+        "ts": 1593590696,
+        "solar_rad": 0,
+        "state_code": "11",
+        "city_name": "Los Ángeles",
+        "wind_spd": 0.753852,
+        "wind_cdir_full": "north-northwest",
+        "wind_cdir": "NNW",
+        "slp": 1014.48,
+        "vis": 24,
+        "h_angle": -90,
+        "sunset": "01:28",
+        "dni": 0,
+        "dewpt": 13.6,
+        "snow": 0,
+        "uv": 0,
+        "precip": 0,
+        "wind_dir": 348,
+        "sunrise": "12:05",
+        "ghi": 0,
+        "dhi": 0,
+        "aqi": 78,
+        "lat": 20.55361,
+        "weather": {
+            "icon": "c04n",
+            "code": 804,
+            "description": "Overcast Clouds"
+        },
+        "datetime": "2020-07-01:08",
+        "temp": 15.9,
+        "station": "F1695",
+        "elev_angle": -42.67,
+        "app_temp": 15.9
+    }],
+    "count": 1
 }

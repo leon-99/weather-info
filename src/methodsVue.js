@@ -13,16 +13,17 @@ export const methodsVue = {
         }
     },
     async getDefaultData(pos) {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&appid=${this.API_KEY}&units=metric`);
+        const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}`)
         const data = await res.json();
         this.setData(data);
+        console.log(data);
     },
     async getSearchedData(e) {
         if (e.target.firstChild.value) {
             this.infoTexts = false;
             this.loading = true;
-            console.log(e.target.firstChild.value) // console.log
-            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${e.target.firstChild.value}&appid=${this.API_KEY}&units=metric`);
+            const res = await fetch(`https://api.weatherbit.io/v2.0/current?city=${e.target.firstChild.value}&key=${this.API_KEY}`);
+            console.log(res)
             if (res.ok === true) {
                 const data = await res.json();
                 this.setData(data);
@@ -31,43 +32,33 @@ export const methodsVue = {
             }
         }
     },
-    calcTime(offset) {
-        const d = new Date();
-        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-        const nd = new Date(utc + (3600000 * offset));
-        return nd
-    },
     setData(data) {
-        console.log(data); // console.log
         this.loading = false;
         this.infoTexts = true;
-        const time = this.calcTime((data.timezone / 60) / 60);
-        this.localTime = time.toTimeString().slice(0, 5);
-        console.log(time); // console.log
-        if (time.getHours() > 7 && time.getHours() < 18) this.iconId = `owf-${data.weather[0].id}-d`;
-        else this.iconId = `owf-${data.weather[0].id}-n`;
-        this.city = data.name;
-        this.country = countryCodes.find(i => i.Code === data.sys.country).Name;
-        this.condition = data.weather[0].main;
-        this.conditionDes = data.weather[0].description;
-        this.mainTemp = Math.round(data.main.temp);
-        this.feelsLikeTemp = Math.round(data.main.feels_like);
-        this.maxTemp = Math.round(data.main.temp_max);
-        this.minTemp = Math.round(data.main.temp_min);
-        this.clouds = data.clouds.all;
-        this.humidity = data.main.humidity;
-        this.pressure = data.main.pressure;
-        this.dewPoint = 'N/A';
-        this.uvi = 'N/A';
-        if (!(data.visibility)) this.visibility = 'N/A';
-        else this.visibility = `${Math.round(data.visibility / 1000)}km`;
+        this.degreeSymbol = '℃';
+        console.log(data)
+        if (data.data.pod === 'd') this.iconId = `owf-${data.data[0].weather.code}-d`;
+        else this.iconId = `owf-${data.data[0].weather.code}-n`;
+        this.city = data.data[0].city_name;
+        this.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
+        this.condition = data.data[0].weather.description;
+        this.mainTemp = Math.round(data.data[0].temp);
+        this.feelsLikeTemp = Math.round(data.data[0].app_temp);
+        // this.maxTemp = Math.round(data.main.temp_max);
+        // this.minTemp = Math.round(data.main.temp_min);
+        this.clouds = data.data[0].clouds;
+        this.humidity = Math.round(data.data[0].rh);
+        this.pressure = Math.round(data.data[0].pres);
+        this.dewPoint = Math.round(data.data[0].dewpt);
+        this.uvi = Math.round(data.data[0].uv);
+        this.visibility = `${Math.round(data.data[0].vis)}km`;
+        this.aqi = data.data[0].aqi;
+        this.slp = 'N/A'
         this.setBg(data);
     },
     setBg(data) {
-        const time = this.calcTime((data.timezone / 60) / 60)
-        let id = data.weather[0].id;
-        console.log(id) // console.log
-        if (time.getHours() >= 7 && time.getHours() <= 18) {
+        let id = data.data[0].weather.code;
+        if (data.data.pod === 'd') {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-d'
             } else if (id === 701 || id === 711 || id === 721 || id === 741) {
@@ -121,6 +112,7 @@ export const methodsVue = {
         this.maxTemp = '';
         this.minTemp = '';
         this.feelsLikeTemp = '';
+        this.degreeSymbol = '-';
         this.iconId = '';
         this.detailDataTexts = false;
     }

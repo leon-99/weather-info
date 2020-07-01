@@ -1,5 +1,5 @@
 export const dataVue = {
-    API_KEY: '63a2f24719ef86545f85b8348fabd7c8',
+    API_KEY: '4cf3f07b09324b46a99f7028b6758a4e',
     localTime: null, 
     infoTexts: false,
     loading: true,
@@ -12,13 +12,14 @@ export const dataVue = {
     feelsLikeTemp: null,
     degreeSymbol: '℃',
     condition: null,
-    conditionDes: null,
     clouds: '',
     uvi: '',
     humidity: '',
     pressure: '',
     visibility: '',
     dewPoint: '',
+    aqi: '',
+    slp: '',
     bgImage: 'foggy-n',
     detailDataTexts: true,
 }
