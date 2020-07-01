@@ -26,8 +26,6 @@
             />
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
             <Details
               :clouds="this.clouds"
               :uvi="this.uvi"
@@ -39,8 +37,6 @@
               :slp="this.slp"
               :detailDataTexts="this.detailDataTexts"
             />
-          </div>
-        </div>
       </div>
     </div>
   </div>

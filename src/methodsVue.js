@@ -58,7 +58,7 @@ export const methodsVue = {
     },
     setBg(data) {
         let id = data.data[0].weather.code;
-        if (data.data.pod === 'd') {
+        if (data.data[0].pod === 'd') {
             if (id >= 200 && id <= 531) {
                 this.bgImage = 'rain-d'
             } else if (id === 701 || id === 711 || id === 721 || id === 741) {

@@ -2,47 +2,47 @@
   <div class="details-container">
     <div class="details-info-container">
       <div class="details-info-line-1 row">
-        <div class="clouds-container detail-containers col-md-2 col-6">
+        <div class="clouds-container detail-containers col-md-2 col-3">
           <i class="fas fa-cloud"></i>
           <p>Clouds</p>
           <p v-if="detailDataTexts">{{ clouds }}%</p>
         </div>
-        <div class="humid-container detail-containers col-md-2 col-6">
+        <div class="humid-container detail-containers col-md-2 col-3">
           <i class="far fa-sun"></i>
           <p>UV Index</p>
           <p v-if="detailDataTexts">{{ uvi }}</p>
         </div>
-        <div class="uvi-container detail-containers col-md-2 col-6">
+        <div class="uvi-container detail-containers col-md-2 col-3">
           <i class="fas fa-tint"></i>
           <p>Humidity</p>
           <p v-if="detailDataTexts">{{ humidity }}%</p>
         </div>
-        <div class="pressure-container detail-containers col-md-2 col-6">
+        <div class="pressure-container detail-containers col-md-2 col-3">
           <i class="fas fa-tachometer-alt"></i>
           <p>Pressure</p>
           <p v-if="detailDataTexts">{{ pressure }}mb</p>
         </div>
       </div>
       <div class="details-info-line-2 row">
-        <div class="visibility-container detail-containers col-md-2 col-6">
+        <div class="visibility-container detail-containers col-md-2 col-3">
           <i class="fas fa-eye"></i>
           <p>Visibility</p>
           <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
         </div>
-        <div class="dew-container detail-containers col-md-2 col-6">
+        <div class="dew-container detail-containers col-md-2 col-3">
           <i class="fas fa-lungs"></i>
           <p>Air Quality</p>
           <p v-if="detailDataTexts">{{ aqi }}</p>
         </div>
-        <div class="dew-container detail-containers col-md-2 col-6">
+        <div class="dew-container detail-containers col-md-2 col-3">
           <i class="fas fa-water"></i>
           <p>Sea Level</p>
           <p v-if="detailDataTexts">{{ slp }}</p>
         </div>
-        <div class="dew-container detail-containers col-md-2 col-6">
+        <div class="dew-container detail-containers col-md-2 col-3">
           <i class="fas fa-tint"></i>
           <p>Dew Point</p>
-          <p v-if="detailDataTexts">{{ dewPoint }}</p>
+          <p v-if="detailDataTexts" class="data-text">{{ dewPoint }}</p>
         </div>
       </div>
     </div>
@@ -76,14 +76,13 @@ export default {
   justify-content: center;
   align-items: center; */
 }
-.details-info-container {
+/* .details-info-container {
   display: flex;
   flex-direction: column;
-}
+} */
 .details-info-line-1,
 .details-info-line-2,
 .details-info-line-3 {
-  display: flex;
   justify-content: space-around;
   color: white;
   text-align: center;
@@ -100,6 +99,11 @@ export default {
 @media screen and (max-width: 396px) {
   .visibility-data {
     margin-top: 40px;
+  }
+
+  .detail-containers {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 </style>

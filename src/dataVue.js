@@ -20,6 +20,6 @@ export const dataVue = {
     dewPoint: '',
     aqi: '',
     slp: '',
-    bgImage: 'foggy-n',
+    bgImage: 'cloudy-n',
     detailDataTexts: true,
 }
