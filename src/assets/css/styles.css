@@ -1,10 +1,10 @@
 .bg-container {
+    transition: all ease 0.3s;
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: all ease 0.3s;
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
 }

@@ -24,17 +24,19 @@
             <span class="sr-only">Loading...</span>
           </div>
           <h2 v-if="infoTexts" class="main-temp" @click="$emit('changeDegreeFunction')">
-            <span >{{mainTemp}}</span><span>{{ degreeSymbol }}</span>
+            <span>{{mainTemp}}</span>
+            <span>{{ degreeSymbol }}</span>
           </h2>
           <h5 class="__my2" v-if="infoTexts">
             Feels like
-            <span>{{ feelsLikeTemp }}</span><span>{{ degreeSymbol }}</span>
+            <span>{{ feelsLikeTemp }}</span>
+            <span>{{ degreeSymbol }}</span>
           </h5>
         </div>
         <div class="spinner-border" role="status" v-if="loading">
           <span class="sr-only">Loading...</span>
         </div>
-        <div class="max-min-temp">
+        <!-- <div class="max-min-temp">
           <p v-if="infoTexts">
             Max
             <span>
@@ -44,7 +46,7 @@
               <span>{{ minTemp }}</span><span>{{ degreeSymbol }}</span>
             </span>
           </p>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
@@ -59,8 +61,8 @@ export default {
     "condition",
     "mainTemp",
     "feelsLikeTemp",
-    "maxTemp",
-    "minTemp",
+    // "maxTemp",
+    // "minTemp",
     "iconId",
     "loading",
     "infoTexts",

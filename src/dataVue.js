@@ -22,4 +22,5 @@ export const dataVue = {
     slp: '',
     bgImage: 'cloudy-n',
     detailDataTexts: true,
+    aqiColor: ''
 }

@@ -16,8 +16,6 @@
               :condition="this.condition"
               :mainTemp="this.mainTemp"
               :feelsLikeTemp="this.feelsLikeTemp"
-              :maxTemp="this.maxTemp"
-              :minTemp="this.minTemp"
               :iconId="this.iconId"
               :loading="this.loading"
               :infoTexts="this.infoTexts"
@@ -36,6 +34,8 @@
               :aqi="this.aqi"
               :slp="this.slp"
               :detailDataTexts="this.detailDataTexts"
+              :degreeSymbol="this.degreeSymbol"
+              :aqiColor="this.aqiColor"
             />
       </div>
     </div>

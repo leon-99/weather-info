@@ -33,6 +33,7 @@
           <i class="fas fa-lungs"></i>
           <p>Air Quality</p>
           <p v-if="detailDataTexts">{{ aqi }}</p>
+          <hr class="hr" :class="aqiColor">
         </div>
         <div class="dew-container detail-containers col-md-2 col-3">
           <i class="fas fa-water"></i>
@@ -42,7 +43,7 @@
         <div class="dew-container detail-containers col-md-2 col-3">
           <i class="fas fa-tint"></i>
           <p>Dew Point</p>
-          <p v-if="detailDataTexts" class="data-text">{{ dewPoint }}</p>
+          <p v-if="detailDataTexts" class="data-text">{{ dewPoint }}<span>{{ degreeSymbol }}</span></p>
         </div>
       </div>
     </div>
@@ -61,7 +62,11 @@ export default {
     "dewPoint",
     "aqi",
     "slp",
-    "detailDataTexts"
+    "detailDataTexts",
+    "degreeSymbol",
+    "aqiColor",
+    "aqiColorBar",
+    "aqiConText"
   ]
 };
 </script>
@@ -72,14 +77,9 @@ export default {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 20px;
   border-radius: 10px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  transition: all ease 0.3s;
 }
-/* .details-info-container {
-  display: flex;
-  flex-direction: column;
-} */
+
 .details-info-line-1,
 .details-info-line-2,
 .details-info-line-3 {
@@ -94,6 +94,35 @@ export default {
   border-radius: 10px;
   min-height: 100px;
   font-size: large;
+}
+
+.hr {
+  width: 50px;
+  height: 10px;
+}
+
+.aqi-green {
+  background-color: chartreuse;
+}
+
+.aqi-yellow {
+  background-color: yellow;
+}
+
+.aqi-orange {
+  background-color: orangered;
+}
+
+.aqi-red {
+  background-color: red;
+}
+
+.aqi-purple {
+  background-color: purple;
+}
+
+.aqi-brown {
+  background-color: brown;
 }
 
 @media screen and (max-width: 396px) {
