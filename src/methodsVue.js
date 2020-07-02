@@ -52,6 +52,18 @@ export const methodsVue = {
         this.slp = 'N/A'
         this.setBg(data);
         this.setAQIColor(data);
+        this.getAlerts(data);
+    },
+    async getAlerts(dataPassed) {
+        const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${dataPassed.data[0].city_name}&key=${this.API_KEY}`);
+        const data = await res.json();
+        this.setAlerts(data);
+    },
+    setAlerts(data) {
+        if (data.alerts[0]) {
+            this.alertTitleText = true;
+            this.alertTitle = data.alerts[0].title;
+        }
     },
     setBg(data) {
         let id = data.data[0].weather.code;

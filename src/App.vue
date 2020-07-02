@@ -19,7 +19,8 @@
               :iconId="this.iconId"
               :loading="this.loading"
               :infoTexts="this.infoTexts"
-              :localTime="this.localTime"
+              :alertTitleText="this.alertTitleText"
+              :alertTitle="this.alertTitle"
               :degreeSymbol="this.degreeSymbol"
             />
           </div>

@@ -9,7 +9,7 @@
           <span>{{ city }}</span>,
           <span>{{ country }}</span>
         </h3>
-        <h5>{{ localTime }}</h5>
+        <p class="alert-title" v-if="alertTitleText">{{ alertTitle }}</p>
       </div>
       <div class="icon-container">
         <div class="spinner-border" role="status" v-if="loading">
@@ -32,9 +32,6 @@
             <span>{{ feelsLikeTemp }}</span>
             <span>{{ degreeSymbol }}</span>
           </h5>
-        </div>
-        <div class="spinner-border" role="status" v-if="loading">
-          <span class="sr-only">Loading...</span>
         </div>
         <!-- <div class="max-min-temp">
           <p v-if="infoTexts">
@@ -66,8 +63,9 @@ export default {
     "iconId",
     "loading",
     "infoTexts",
-    "localTime",
-    "degreeSymbol"
+    "degreeSymbol",
+    "alertTitleText",
+    "alertTitle"
   ]
 };
 </script>
@@ -102,5 +100,10 @@ export default {
 }
 .city-name {
   margin-bottom: 20px;
+}
+
+.alert-title {
+  color: rgba(255, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 </style>
