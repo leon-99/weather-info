@@ -1,16 +1,35 @@
 <template>
   <div id="app" class="bg-container" :class="bgImage">
+    <modal
+      name="hello-world"
+      class="alert-modal"
+      height="auto"
+      :adaptive="true"
+      :scrollable="true"
+      styles="background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 20px;
+      letterSpacing: 1px;
+      "
+    >
+      <p class="alert-body-title text__center ">{{ alertTitle }}</p>
+      <p>{{ alertBody }}</p>
+      <br>
+      <p class="text__center ">Regions</p>
+      <p>{{ alertRegions }}</p>
+    </modal>
     <div class="main">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <SearchBar @getSearchedDataFunction="getSearchedData"/>
+            <SearchBar @getSearchedDataFunction="getSearchedData" />
           </div>
         </div>
         <div class="row">
           <div class="col-12 text-center">
             <MainInfo
-            @changeDegreeFunction="changeDegree"
+              @showAlertBodyFunction="showAlertBody"
+              @changeDegreeFunction="changeDegree"
               :city="this.city"
               :country="this.country"
               :condition="this.condition"
@@ -25,19 +44,19 @@
             />
           </div>
         </div>
-            <Details
-              :clouds="this.clouds"
-              :uvi="this.uvi"
-              :humidity="this.humidity"
-              :pressure="this.pressure"
-              :visibility="this.visibility"
-              :dewPoint="this.dewPoint"
-              :aqi="this.aqi"
-              :slp="this.slp"
-              :detailDataTexts="this.detailDataTexts"
-              :degreeSymbol="this.degreeSymbol"
-              :aqiColor="this.aqiColor"
-            />
+        <Details
+          :clouds="this.clouds"
+          :uvi="this.uvi"
+          :humidity="this.humidity"
+          :pressure="this.pressure"
+          :visibility="this.visibility"
+          :dewPoint="this.dewPoint"
+          :aqi="this.aqi"
+          :slp="this.slp"
+          :detailDataTexts="this.detailDataTexts"
+          :degreeSymbol="this.degreeSymbol"
+          :aqiColor="this.aqiColor"
+        />
       </div>
     </div>
   </div>

@@ -60,9 +60,14 @@ export const methodsVue = {
         this.setAlerts(data);
     },
     setAlerts(data) {
-        if (data.alerts[0]) {
+        console.log(data)
+        if (!(data.alerts.length === 0)) {
             this.alertTitleText = true;
             this.alertTitle = data.alerts[0].title;
+            this.alertBody = data.alerts[0].description;
+            this.alertRegions = data.alerts[0].regions.toString();
+        } else {
+            this.alertTitleText = false;
         }
     },
     setBg(data) {
@@ -123,5 +128,8 @@ export const methodsVue = {
             aqi > 150 && aqi <= 200 ? this.aqiColor = 'aqi-red' :
             aqi > 200 && aqi <= 300 ? this.aqiColor = 'aqi-purple' :
             this.aqiColor = 'aqi-brown'
+    },
+    showAlertBody() {
+        this.$modal.show('hello-world');
     }
 }

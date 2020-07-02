@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
 .bg-container {
     transition: all ease 0.3s;
     min-height: 100vh;
@@ -7,6 +9,10 @@
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
+}
+
+.text__center {
+    text-align: center;
 }
 
 .clear-d {
@@ -71,6 +77,14 @@
 
 .snow-n {
     background-image: url('../bg-images/snow-n.jpg');
+}
+
+.alert-body-title {
+    color: orange;
+}
+
+.alert-modal {
+    font-family: 'Roboto Mono', monospace;
 }
 
 @media (min-width: 768px) {

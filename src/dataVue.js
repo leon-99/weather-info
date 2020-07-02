@@ -24,5 +24,7 @@ export const dataVue = {
     detailDataTexts: true,
     aqiColor: '',
     alertTitleText: false,
-    alertTitle: ''
+    alertTitle: '',
+    alertBody: '',
+    alertRegions: ''
 }

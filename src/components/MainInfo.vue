@@ -9,7 +9,7 @@
           <span>{{ city }}</span>,
           <span>{{ country }}</span>
         </h3>
-        <p class="alert-title" v-if="alertTitleText">{{ alertTitle }}</p>
+        <p class="alert-title" v-if="alertTitleText" @click="$emit('showAlertBodyFunction')">{{ alertTitle }}</p>
       </div>
       <div class="icon-container">
         <div class="spinner-border" role="status" v-if="loading">
@@ -103,7 +103,11 @@ export default {
 }
 
 .alert-title {
-  color: rgba(255, 0, 0, 0.8);
-  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-size: small;
+  padding: 5px;
+  cursor: pointer;
 }
 </style>
