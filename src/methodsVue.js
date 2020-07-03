@@ -20,15 +20,22 @@ export const methodsVue = {
     async getSearchedData(e) {
         if (e.target.firstChild.value) {
             this.infoTexts = false;
+            this.alertTitleText = false;
             this.loading = true;
-            const res = await fetch(`https://api.weatherbit.io/v2.0/current?city=${e.target.firstChild.value}&key=${this.API_KEY}`);
-            if (res.ok === true) {
+            const res = await fetch(this.filterCity(e.target.firstChild.value));
+            if (res.status === 200) {
                 const data = await res.json();
                 this.setData(data);
             } else {
                 this.showNotFound(e);
             }
         }
+    },
+    filterCity(city) {
+        let searchedCity;
+        city === 'los angeles' ? searchedCity = `https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}` :
+        searchedCity = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.API_KEY}`
+        return searchedCity;
     },
     setData(data) {
         console.log(data)
@@ -111,14 +118,19 @@ export const methodsVue = {
         this.city = e.target.firstChild.value;
         this.localTime = '';
         this.condition = '';
-        this.conditionDes = '';
-        this.mainTemp = '';
-        this.maxTemp = '';
-        this.minTemp = '';
+        this.mainTemp = '-';
         this.feelsLikeTemp = '';
         this.degreeSymbol = '-';
         this.iconId = '';
-        this.detailDataTexts = false;
+        this.aqiColor = '';
+        this.clouds = '-';
+        this.humidity = '-';
+        this.pressure = '-';
+        this.dewPoint = '-';
+        this.uvi = '-';
+        this.visibility = '-';
+        this.aqi = '-';
+        this.slp = '-';
     },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;
