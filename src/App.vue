@@ -12,12 +12,12 @@
       letterSpacing: 1px;
       "
     >
-      <p class="alert-body-title text__center">{{ alertTitle }}</p>
+      <p class="text-warning text__center">{{ alertTitle }}</p>
       <p>{{ alertBody }}</p>
       <br />
       <p class="text__center">Regions</p>
       <p>{{ alertRegions }}</p>
-      <button class="close-single-alert-close-btn" @click="closeSingleAlert">Close</button>
+      <button class="close-single-alert-btn" @click="closeSingleAlert">Close</button>
     </modal>
     <div class="main">
       <div class="container">
