@@ -33,8 +33,8 @@ export const methodsVue = {
     },
     filterCity(city) {
         let searchedCity;
-        city === 'los angeles' ? searchedCity = `https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}` :
-        searchedCity = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.API_KEY}`
+        city === 'los angeles' || city === 'Los Angeles' || city === 'los Angeles' || city === 'Los angeles' || city === 'LOS ANGELES' ? searchedCity = `https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}` :
+            searchedCity = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.API_KEY}`
         return searchedCity;
     },
     setData(data) {
@@ -72,10 +72,10 @@ export const methodsVue = {
         }
     },
     setAlert(data) {
-            this.alertTitleText = true;
-            this.alertTitle = data.alerts[0].title;
-            this.alertBody = data.alerts[0].description;
-            this.alertRegions = data.alerts[0].regions.toString();
+        this.alertTitleText = true;
+        this.alertTitle = data.alerts[0].title;
+        this.alertBody = data.alerts[0].description;
+        this.alertRegions = data.alerts[0].regions.toString();
     },
     setBg(data) {
         let id = data.data[0].weather.code;
