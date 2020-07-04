@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 
 .bg-container {
-    transition: all ease 0.3s;
+    transition: all ease 0.5s;
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center center;
@@ -85,6 +85,21 @@
 
 .alert-modal {
     font-family: 'Roboto Mono', monospace;
+}
+
+.close-single-alert-close-btn {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    margin-top: 30px;
+    background-color: transparent;
+    color: orange;
+    padding: 5px 10px;
+    transition: all ease 0.5s;
+}
+
+.close-single-alert-close-btn:active {
+    outline: none;
 }
 
 @media (min-width: 768px) {

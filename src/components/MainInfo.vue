@@ -12,7 +12,7 @@
         <p
           class="alert-title"
           v-if="alertTitleText"
-          @click="$emit('showAlertBodyFunction')"
+          @click="$emit('showSingleAlertFunction')"
         >{{ alertTitle }}</p>
       </div>
       <div class="icon-container">
@@ -101,6 +101,7 @@ export default {
 }
 .main-temp {
   font-size: 50px;
+  cursor: pointer;
 }
 .city-name {
   margin-bottom: 20px;

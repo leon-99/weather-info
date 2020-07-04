@@ -13,7 +13,7 @@ export const methodsVue = {
         }
     },
     async getDefaultData(pos) {
-        const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}`)
+        const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}&units=${this.API_UNITS}`)
         const data = await res.json();
         this.setData(data);
     },
@@ -64,18 +64,18 @@ export const methodsVue = {
     async getAlerts(dataPassed) {
         const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${dataPassed.data[0].city_name}&key=${this.API_KEY}`);
         const data = await res.json();
-        this.setAlerts(data);
-    },
-    setAlerts(data) {
-        console.log(data)
+        console.log(data);
         if (!(data.alerts.length === 0)) {
+            this.setAlert(data);
+        } else {
+            this.alertTitleText = false;
+        }
+    },
+    setAlert(data) {
             this.alertTitleText = true;
             this.alertTitle = data.alerts[0].title;
             this.alertBody = data.alerts[0].description;
             this.alertRegions = data.alerts[0].regions.toString();
-        } else {
-            this.alertTitleText = false;
-        }
     },
     setBg(data) {
         let id = data.data[0].weather.code;
@@ -141,7 +141,10 @@ export const methodsVue = {
             aqi > 200 && aqi <= 300 ? this.aqiColor = 'aqi-purple' :
             this.aqiColor = 'aqi-brown'
     },
-    showAlertBody() {
-        this.$modal.show('hello-world');
+    showSingleAlert() {
+        this.$modal.show('single-alert');
+    },
+    closeSingleAlert() {
+        this.$modal.hide('single-alert')
     }
 }

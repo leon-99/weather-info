@@ -1,5 +1,6 @@
 export const dataVue = {
     API_KEY: '4cf3f07b09324b46a99f7028b6758a4e',
+    API_UNITS: 'M',
     localTime: null, 
     infoTexts: false,
     loading: true,
@@ -20,7 +21,7 @@ export const dataVue = {
     dewPoint: '',
     aqi: '',
     slp: '',
-    bgImage: 'cloudy-n',
+    bgImage: 'cloudy-d',
     detailDataTexts: true,
     aqiColor: '',
     alertTitleText: false,

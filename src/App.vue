@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="bg-container" :class="bgImage">
     <modal
-      name="hello-world"
+      name="single-alert"
       class="alert-modal"
       height="auto"
       :adaptive="true"
@@ -12,11 +12,12 @@
       letterSpacing: 1px;
       "
     >
-      <p class="alert-body-title text__center ">{{ alertTitle }}</p>
+      <p class="alert-body-title text__center">{{ alertTitle }}</p>
       <p>{{ alertBody }}</p>
-      <br>
-      <p class="text__center ">Regions</p>
+      <br />
+      <p class="text__center">Regions</p>
       <p>{{ alertRegions }}</p>
+      <button class="close-single-alert-close-btn" @click="closeSingleAlert">Close</button>
     </modal>
     <div class="main">
       <div class="container">
@@ -28,7 +29,7 @@
         <div class="row">
           <div class="col-12 text-center">
             <MainInfo
-              @showAlertBodyFunction="showAlertBody"
+              @showSingleAlertFunction="showSingleAlert"
               @changeDegreeFunction="changeDegree"
               :city="this.city"
               :country="this.country"
