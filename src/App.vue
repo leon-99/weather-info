@@ -1,63 +1,87 @@
 <template>
   <div id="app" class="bg-container" :class="bgImage">
-    <modal
-      name="single-alert"
-      class="alert-modal"
-      height="auto"
-      :adaptive="true"
-      :scrollable="true"
-      styles="background: rgba(0, 0, 0, 0.9);
+    <div class="bg-container-inner">
+      <modal
+        name="single-alert"
+        class="alert-modal"
+        height="auto"
+        :adaptive="true"
+        :scrollable="true"
+        styles="background: rgba(0, 0, 0, 0.9);
       color: white;
       padding: 20px;
       letterSpacing: 1px;
       "
-    >
-      <p class="text-warning text__center">{{ alertTitle }}</p>
-      <p>{{ alertBody }}</p>
-      <br />
-      <p class="text__center">Regions</p>
-      <p>{{ alertRegions }}</p>
-      <button class="close-single-alert-btn" @click="closeSingleAlert">Close</button>
-    </modal>
-    <div class="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <SearchBar @getSearchedDataFunction="getSearchedData" />
+      >
+        <p class="text-warning text__center">{{ alertTitle }}</p>
+        <p>{{ alertBody }}</p>
+        <br />
+        <p class="text__center">Regions</p>
+        <p>{{ alertRegions }}</p>
+        <button class="close-single-alert-btn" @click="closeSingleAlert">Close</button>
+      </modal>
+      <modal
+        name="multiple-alert"
+        class="alert-modal"
+        height="auto"
+        :adaptive="true"
+        :scrollable="true"
+        styles="background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 20px;
+      letterSpacing: 1px;
+      "
+      >
+        <p class="text-warning text__center">{{ alertTitle }}</p>
+        <p>{{ alertBody }}</p>
+        <br />
+        <p class="text__center">Regions</p>
+        <p>{{ alertRegions }}</p>
+        <button class="close-single-alert-btn" @click="closeMultipleAlerts">Close</button>
+      </modal>
+      <div class="main">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <SearchBar @getSearchedDataFunction="getSearchedData" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center">
-            <MainInfo
-              @showSingleAlertFunction="showSingleAlert"
-              @changeDegreeFunction="changeDegree"
-              :city="this.city"
-              :country="this.country"
-              :condition="this.condition"
-              :mainTemp="this.mainTemp"
-              :feelsLikeTemp="this.feelsLikeTemp"
-              :iconId="this.iconId"
-              :loading="this.loading"
-              :infoTexts="this.infoTexts"
-              :alertTitleText="this.alertTitleText"
-              :alertTitle="this.alertTitle"
-              :degreeSymbol="this.degreeSymbol"
-            />
+          <div class="row">
+            <div class="col-12 text-center">
+              <MainInfo
+                @showSingleAlertFunction="showSingleAlert"
+                @showMultipleAlertsFunction="showMultipleAlerts"
+                @changeDegreeFunction="changeDegree"
+                :city="this.city"
+                :country="this.country"
+                :condition="this.condition"
+                :mainTemp="this.mainTemp"
+                :feelsLikeTemp="this.feelsLikeTemp"
+                :iconId="this.iconId"
+                :loading="this.loading"
+                :infoTexts="this.infoTexts"
+                :alertTitleText="this.alertTitleText"
+                :alertTitle="this.alertTitle"
+                :multipleAlertsTitle="this.multipleAlertsTitle"
+                :multipleAlertsTitleText="this.multipleAlertsTitleText"
+                :degreeSymbol="this.degreeSymbol"
+              />
+            </div>
           </div>
+          <Details
+            :clouds="this.clouds"
+            :uvi="this.uvi"
+            :humidity="this.humidity"
+            :pressure="this.pressure"
+            :visibility="this.visibility"
+            :dewPoint="this.dewPoint"
+            :aqi="this.aqi"
+            :slp="this.slp"
+            :detailDataTexts="this.detailDataTexts"
+            :degreeSymbol="this.degreeSymbol"
+            :aqiColor="this.aqiColor"
+          />
         </div>
-        <Details
-          :clouds="this.clouds"
-          :uvi="this.uvi"
-          :humidity="this.humidity"
-          :pressure="this.pressure"
-          :visibility="this.visibility"
-          :dewPoint="this.dewPoint"
-          :aqi="this.aqi"
-          :slp="this.slp"
-          :detailDataTexts="this.detailDataTexts"
-          :degreeSymbol="this.degreeSymbol"
-          :aqiColor="this.aqiColor"
-        />
       </div>
     </div>
   </div>
@@ -81,7 +105,7 @@ export default {
   },
   methods: methodsVue,
   mounted() {
-    this.locateUserPosttion();
+    this.locateUserPosition();
   }
 };
 </script>

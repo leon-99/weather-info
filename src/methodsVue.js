@@ -5,15 +5,15 @@ import {
     tempConverter
 } from "./temp-converter";
 export const methodsVue = {
-    locateUserPosttion() {
+    locateUserPosition() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(res => {
                 this.getDefaultData(res)
             })
         }
     },
-    async getDefaultData(pos) {
-        const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}&units=${this.API_UNITS}`)
+    async getDefaultData() { // lat=${pos.coords.latitude}&lon=${pos.coords.longitude}
+        const res = await fetch(`https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}&units=${this.API_UNITS}`)
         const data = await res.json();
         this.setData(data);
     },
@@ -65,7 +65,9 @@ export const methodsVue = {
         const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${dataPassed.data[0].city_name}&key=${this.API_KEY}`);
         const data = await res.json();
         console.log(data);
-        if (!(data.alerts.length === 0)) {
+        if (data.alerts.length > 1) {
+            this.setMultipleAlerts(data);
+        } else if (!(data.alerts.length === 0)) {
             this.setAlert(data);
         } else {
             this.alertTitleText = false;
@@ -76,6 +78,11 @@ export const methodsVue = {
         this.alertTitle = data.alerts[0].title;
         this.alertBody = data.alerts[0].description;
         this.alertRegions = data.alerts[0].regions.toString();
+    },
+    setMultipleAlerts(data) {
+        this.multipleAlertsTitleText = true;
+        this.multipleAlertsTitle = `${data.alerts.length} Weather Alerts in this area`;
+        this.multipleAlertsArray = data.alerts;
     },
     setBg(data) {
         let id = data.data[0].weather.code;
@@ -145,6 +152,12 @@ export const methodsVue = {
         this.$modal.show('single-alert');
     },
     closeSingleAlert() {
-        this.$modal.hide('single-alert')
+        this.$modal.hide('single-alert');
+    },
+    showMultipleAlerts() {
+        this.$modal.show('multiple-alerts');
+    },
+    closeMultipleAlerts() {
+        this.$modal.close('multiple-alerts');
     }
 }

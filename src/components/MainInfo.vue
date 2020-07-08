@@ -9,11 +9,17 @@
           <span>{{ city }}</span>,
           <span>{{ country }}</span>
         </h3>
+        <p class="alert-title" v-if="alertTitleText" @click="$emit('showSingleAlertFunction')">
+          <span>
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+          {{ alertTitle }}
+        </p>
         <p
           class="alert-title"
-          v-if="alertTitleText"
-          @click="$emit('showSingleAlertFunction')"
-        > <span><i class="fas fa-exclamation-circle"></i></span> {{ alertTitle }}</p>
+          v-if="multipleAlertsTitleText"
+          @click="$emit('showMultipleAlertsFunction')"
+        >{{ multipleAlertsTitle }}</p>
       </div>
       <div class="icon-container">
         <div class="spinner-border" role="status" v-if="loading">
@@ -69,7 +75,9 @@ export default {
     "infoTexts",
     "degreeSymbol",
     "alertTitleText",
-    "alertTitle"
+    "alertTitle",
+    "multipleAlertsTitle",
+    "multipleAlertsTitleText"
   ]
 };
 </script>

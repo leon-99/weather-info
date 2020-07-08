@@ -27,5 +27,8 @@ export const dataVue = {
     alertTitleText: false,
     alertTitle: '',
     alertBody: '',
-    alertRegions: ''
+    alertRegions: '',
+    multipleAlertsTitleText: false,
+    multipleAlertsTitle: '',
+    multipleAlertsArray: []
 }
