@@ -12,8 +12,8 @@ export const methodsVue = {
             })
         }
     },
-    async getDefaultData() { // lat=${pos.coords.latitude}&lon=${pos.coords.longitude}
-        const res = await fetch(`https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}&units=${this.API_UNITS}`)
+    async getDefaultData(pos) { // 
+        const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}&units=${this.API_UNITS}`)
         const data = await res.json();
         this.setData(data);
     },
@@ -21,6 +21,7 @@ export const methodsVue = {
         if (e.target.firstChild.value) {
             this.infoTexts = false;
             this.alertTitleText = false;
+            this.multipleAlertsTitleText = false;
             this.loading = true;
             const res = await fetch(this.filterCity(e.target.firstChild.value));
             if (res.status === 200) {
@@ -83,6 +84,7 @@ export const methodsVue = {
         this.multipleAlertsTitleText = true;
         this.multipleAlertsTitle = `${data.alerts.length} Weather Alerts in this area`;
         this.multipleAlertsArray = data.alerts;
+        console.log(this.multipleAlertsArray)
     },
     setBg(data) {
         let id = data.data[0].weather.code;
@@ -158,6 +160,6 @@ export const methodsVue = {
         this.$modal.show('multiple-alerts');
     },
     closeMultipleAlerts() {
-        this.$modal.close('multiple-alerts');
+        this.$modal.hide('multiple-alerts');
     }
 }

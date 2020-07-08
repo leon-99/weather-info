@@ -21,7 +21,7 @@
         <button class="close-single-alert-btn" @click="closeSingleAlert">Close</button>
       </modal>
       <modal
-        name="multiple-alert"
+        name="multiple-alerts"
         class="alert-modal"
         height="auto"
         :adaptive="true"
@@ -32,11 +32,14 @@
       letterSpacing: 1px;
       "
       >
-        <p class="text-warning text__center">{{ alertTitle }}</p>
-        <p>{{ alertBody }}</p>
-        <br />
-        <p class="text__center">Regions</p>
-        <p>{{ alertRegions }}</p>
+        <div v-for="alert in multipleAlertsArray" :key="multipleAlertsArray.indexOf(alert)">
+          <p class="text-warning text__center">{{ alert.title }}</p>
+          <p>{{ alert.description }}</p>
+          <br />
+          <p class="text__center">Regions</p>
+          <p>{{ alert.regions.toString().split(',').join(', ') }}</p>
+          <hr class="hr">
+        </div>
         <button class="close-single-alert-btn" @click="closeMultipleAlerts">Close</button>
       </modal>
       <div class="main">

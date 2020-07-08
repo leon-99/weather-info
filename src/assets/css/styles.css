@@ -30,30 +30,6 @@
     background-image: url('../bg-images/cloudy-d.jpg');
 }
 
-.clear-d {
-    background-image: url('../bg-images/clear-d.jpg');
-}
-
-.clear-n {
-    background-image: url('../bg-images/clear-n.jpg');
-}
-
-.cloudy-d {
-    background-image: url('../bg-images/cloudy-d.jpg');
-}
-
-.cloudy-n {
-    background-image: url('../bg-images/cloudy-n.jpg');
-}
-
-.rain-d {
-    background-image: url('../bg-images/rain-d.jpg');
-}
-
-.rain-n {
-    background-image: url('../bg-images/rain-n.jpg');
-}
-
 .cloudy-n {
     background-image: url('../bg-images/cloudy-n.jpg');
 }
@@ -103,6 +79,12 @@
 
 .close-single-alert-close-btn:active {
     outline: none;
+}
+
+.hr {
+    background: #ffc107;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
