@@ -43,7 +43,7 @@
             <span>{{ degreeSymbol }}</span>
           </h5>
           <h5 class="mt-5">
-            Wind {{ windSpeed }} from {{ windDir }}
+            Wind {{ windSpeed }}
             <i
               class="far fa-arrow-alt-circle-up wind-degree-arrow" 
               :style="{transform: 'rotate(' + windDegree + 'deg' +')'}"

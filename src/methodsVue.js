@@ -39,6 +39,7 @@ export const methodsVue = {
         return searchedCity;
     },
     setData(data) {
+        console.log(data)
         this.loading = false;
         this.infoTexts = true;
         this.details.degreeSymbol = '℃';
