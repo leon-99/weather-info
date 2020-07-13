@@ -19,8 +19,8 @@ export default {};
   justify-content: center;
 }
 .search-bar {
-  background: none;
-  border: #c26146 1px solid;
+  background: rgba(0, 0, 0, 0.3);
+  border: rgba(0, 0, 0, 0.3) 1px solid;
   padding: 5px;
   border-radius: 0 10px 0 10px;
   transition: all ease 0.3s;

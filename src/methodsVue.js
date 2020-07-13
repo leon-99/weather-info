@@ -39,7 +39,6 @@ export const methodsVue = {
         return searchedCity;
     },
     setData(data) {
-        console.log(data)
         this.loading = false;
         this.infoTexts = true;
         this.degreeSymbol = '℃';
@@ -65,7 +64,6 @@ export const methodsVue = {
     async getAlerts(dataPassed) {
         const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${dataPassed.data[0].city_name}&key=${this.API_KEY}`);
         const data = await res.json();
-        console.log(data);
         if (data.alerts.length > 1) {
             this.setMultipleAlerts(data);
         } else if (!(data.alerts.length === 0)) {
@@ -84,7 +82,6 @@ export const methodsVue = {
         this.multipleAlertsTitleText = true;
         this.multipleAlertsTitle = `${data.alerts.length} Weather Alerts in this area`;
         this.multipleAlertsArray = data.alerts;
-        console.log(this.multipleAlertsArray)
     },
     setBg(data) {
         let id = data.data[0].weather.code;
