@@ -42,18 +42,14 @@
             <span>{{ feelsLikeTemp }}</span>
             <span>{{ degreeSymbol }}</span>
           </h5>
+          <h5 class="mt-5">
+            Wind {{ windSpeed }} from {{ windDir }}
+            <i
+              class="far fa-arrow-alt-circle-right wind-degree-arrow"
+              :style="{transform: 'rotate(' + windDegree + 'deg' +')'}"
+            ></i>
+          </h5>
         </div>
-        <!-- <div class="max-min-temp">
-          <p v-if="infoTexts">
-            Max
-            <span>
-              <span>{{ maxTemp }}</span><span>{{ degreeSymbol }}</span>
-            </span> / Min
-            <span>
-              <span>{{ minTemp }}</span><span>{{ degreeSymbol }}</span>
-            </span>
-          </p>
-        </div>-->
       </div>
     </div>
   </div>
@@ -63,21 +59,22 @@
 export default {
   name: "MainInfo",
   props: [
+    "iconId",
     "city",
     "country",
     "condition",
     "mainTemp",
     "feelsLikeTemp",
-    // "maxTemp",
-    // "minTemp",
-    "iconId",
     "loading",
     "infoTexts",
     "degreeSymbol",
     "alertTitleText",
     "alertTitle",
     "multipleAlertsTitle",
-    "multipleAlertsTitleText"
+    "multipleAlertsTitleText",
+    "windSpeed",
+    "windDir",
+    "windDegree"
   ]
 };
 </script>
@@ -122,5 +119,9 @@ export default {
   font-size: small;
   padding: 5px 10px;
   cursor: pointer;
+}
+
+.wind-degree-arrow {
+  transition: transform linear 0.3s;
 }
 </style>

@@ -41,22 +41,25 @@ export const methodsVue = {
     setData(data) {
         this.loading = false;
         this.infoTexts = true;
-        this.degreeSymbol = '℃';
-        data.data[0].pod === 'd' ? this.iconId = `owf-${data.data[0].weather.code}-d` :
-            this.iconId = `owf-${data.data[0].weather.code}-n`
-        this.city = data.data[0].city_name;
-        this.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
-        this.condition = data.data[0].weather.description;
-        this.mainTemp = Math.round(data.data[0].temp);
-        this.feelsLikeTemp = Math.round(data.data[0].app_temp);
-        this.clouds = data.data[0].clouds;
-        this.humidity = Math.round(data.data[0].rh);
-        this.pressure = Math.round(data.data[0].pres);
-        this.dewPoint = Math.round(data.data[0].dewpt);
-        this.uvi = Math.round(data.data[0].uv);
-        this.visibility = `${Math.round(data.data[0].vis)}km`;
-        this.aqi = data.data[0].aqi;
-        this.slp = 'N/A'
+        this.details.degreeSymbol = '℃';
+        data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d` :
+            this.details.iconId = `owf-${data.data[0].weather.code}-n`
+        this.details.city = data.data[0].city_name;
+        this.details.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
+        this.details.condition = data.data[0].weather.description;
+        this.details.mainTemp = Math.round(data.data[0].temp);
+        this.details.feelsLikeTemp = Math.round(data.data[0].app_temp);
+        this.details.clouds = data.data[0].clouds;
+        this.details.humidity = Math.round(data.data[0].rh);
+        this.details.pressure = Math.round(data.data[0].pres);
+        this.details.dewPoint = Math.round(data.data[0].dewpt);
+        this.details.uvi = Math.round(data.data[0].uv);
+        this.details.visibility = `${Math.round(data.data[0].vis)}km`;
+        this.details.aqi = data.data[0].aqi;
+        this.details.slp = 'N/A'
+        this.details.windSpeed = `${Math.round(data.data[0].wind_spd)}m/s`
+        this.details.windDir = data.data[0].wind_cdir;
+        this.windDegree = data.data[0].wind_dir;
         this.setBg(data);
         this.setAQIColor(data);
         this.getAlerts(data);
@@ -101,19 +104,15 @@ export const methodsVue = {
     },
     changeDegree() {
         if (this.degreeSymbol === '℃') {
-            this.mainTemp = tempConverter.CtoF(this.mainTemp);
-            this.maxTemp = tempConverter.CtoF(this.maxTemp);
-            this.minTemp = tempConverter.CtoF(this.minTemp);
-            this.feelsLikeTemp = tempConverter.CtoF(this.feelsLikeTemp);
-            this.dewPoint = tempConverter.CtoF(this.dewPoint);
-            this.degreeSymbol = '℉';
+            this.details.mainTemp = tempConverter.CtoF(this.mainTemp);
+            this.details.feelsLikeTemp = tempConverter.CtoF(this.feelsLikeTemp);
+            this.details.dewPoint = tempConverter.CtoF(this.dewPoint);
+            this.details.degreeSymbol = '℉';
         } else {
-            this.mainTemp = tempConverter.FtoC(this.mainTemp);
-            this.maxTemp = tempConverter.FtoC(this.maxTemp);
-            this.minTemp = tempConverter.FtoC(this.minTemp);
-            this.feelsLikeTemp = tempConverter.FtoC(this.feelsLikeTemp);
-            this.dewPoint = tempConverter.FtoC(this.dewPoint);
-            this.degreeSymbol = '℃';
+            this.details.mainTemp = tempConverter.FtoC(this.mainTemp);
+            this.details.feelsLikeTemp = tempConverter.FtoC(this.feelsLikeTemp);
+            this.details.dewPoint = tempConverter.FtoC(this.dewPoint);
+            this.details.degreeSymbol = '℃';
         }
         // ℃ ℉
     },
@@ -122,21 +121,9 @@ export const methodsVue = {
         this.infoTexts = true;
         this.country = "Not Found!"
         this.city = e.target.firstChild.value;
-        this.localTime = '';
-        this.condition = '';
-        this.mainTemp = '-';
-        this.feelsLikeTemp = '';
-        this.degreeSymbol = '-';
-        this.iconId = '';
-        this.aqiColor = '';
-        this.clouds = '-';
-        this.humidity = '-';
-        this.pressure = '-';
-        this.dewPoint = '-';
-        this.uvi = '-';
-        this.visibility = '-';
-        this.aqi = '-';
-        this.slp = '-';
+        for (const key in this.details) {
+            this.details[key] = '-'
+        }
     },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;
