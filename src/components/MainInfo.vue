@@ -45,8 +45,8 @@
           <h5 class="mt-5">
             Wind {{ windSpeed }}
             <i
-              class="far fa-arrow-alt-circle-up wind-degree-arrow" 
-              :style="{transform: 'rotate(' + windDegree + 'deg' +')'}"
+              class="far fa-arrow-alt-circle-up  wind-degree-arrow" 
+              :style="{transform: 'rotate(' + windDegree + 'deg)'}"
             ></i>
           </h5>
         </div>
@@ -122,6 +122,6 @@ export default {
 }
 
 .wind-degree-arrow {
-  transition: transform linear 0.3s;
+  transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
 }
 </style>

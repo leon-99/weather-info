@@ -120,11 +120,12 @@ export const methodsVue = {
     showNotFound(e) {
         this.loading = false;
         this.infoTexts = true;
-        this.country = "Not Found!"
-        this.city = e.target.firstChild.value;
         for (const key in this.details) {
             this.details[key] = '-'
         }
+        this.country = "Not Found!"
+        this.city = e.target.firstChild.value;
+        this.windDegree = '0'
     },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;

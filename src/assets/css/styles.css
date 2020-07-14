@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 
 .bg-container {
-    transition: all ease 0.5s;
+    transition: all linear 0.5s;
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center center;
@@ -85,46 +85,4 @@
     background: #ffc107;
     margin-top: 30px;
     margin-bottom: 30px;
-}
-
-@media (min-width: 768px) {
-    .clear-d {
-        background-image: url('../bg-images/clear-d-desktop.jpg');
-    }
-
-    .clear-n {
-        background-image: url('../bg-images/clear-n-desktop.jpg');
-    }
-
-    .cloudy-d {
-        background-image: url('../bg-images/cloudy-d-desktop.jpg');
-    }
-
-    .cloudy-n {
-        background-image: url('../bg-images/cloudy-n-desktop.jpg');
-    }
-
-    .rain-d {
-        background-image: url('../bg-images/rain-d-desktop.jpg');
-    }
-
-    .rain-n {
-        background-image: url('../bg-images/rain-n-desktop.jpg');
-    }
-
-    .snow-d {
-        background-image: url('../bg-images/snow-d-desktop.jpg');
-    }
-
-    .snow-n {
-        background-image: url('../bg-images/snow-n-desktop.jpg');
-    }
-
-    .foggy-d {
-        background-image: url('../bg-images/foggy-d-desktop.jpg');
-    }
-
-    .foggy-n {
-        background-image: url('../bg-images/foggy-n-desktop.jpg');
-    }
 }

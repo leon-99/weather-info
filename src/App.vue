@@ -121,4 +121,5 @@ export default {
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
 @import "./assets/css/owfont-regular.min.css";
 @import "./assets/css/styles.css";
+@import "./assets/css/animations.css";
 </style>

@@ -31,6 +31,6 @@ export const dataVue = {
         dewPoint: '',
         aqi: '',
         slp: '',
-        windSpeed: ''
+        windSpeed: '-'
     }
 }

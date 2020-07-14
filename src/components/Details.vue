@@ -3,17 +3,17 @@
     <div class="details-info-container">
       <div class="details-info-line-1 row">
         <div class="clouds-container detail-containers col-md-2 col-4">
-          <i class="fas fa-cloud"></i>
+          <i class="fas fa-cloud animation-translateX-5px-2s"></i>
           <p>Clouds</p>
           <p v-if="detailDataTexts">{{ clouds }}%</p>
         </div>
         <div class="humid-container detail-containers col-md-2 col-4">
-          <i class="far fa-sun"></i>
+          <i class="far fa-sun animation-rotate-360-3s"></i>
           <p>UV Index</p>
           <p v-if="detailDataTexts">{{ uvi }}</p>
         </div>
         <div class="uvi-container detail-containers col-md-2 col-4">
-          <i class="fas fa-tint"></i>
+          <i class="fas fa-tint animation-translateY-5px-2s"></i>
           <p>Humidity</p>
           <p v-if="detailDataTexts">{{ humidity }}%</p>
         </div>
@@ -30,10 +30,10 @@
           <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
         </div>
         <div class="dew-container detail-containers col-md-2 col-4">
-          <i class="fas fa-lungs"></i>
+          <i class="fas fa-lungs animation-scale-13-3s"></i>
           <p>Air Quality</p>
           <p v-if="detailDataTexts">{{ aqi }}</p>
-          <hr class="hr" :class="aqiColor" />
+          <hr class="aqi-color" :class="aqiColor" />
         </div>
         <div class="dew-container detail-containers col-md-2 col-4">
           <i class="fas fa-water"></i>
@@ -41,7 +41,7 @@
           <p v-if="detailDataTexts">{{ slp }}</p>
         </div>
         <div class="dew-container detail-containers col-md-2 col-4">
-          <i class="fas fa-tint"></i>
+          <i class="fas fa-tint animation-translateY-5px-2s"></i>
           <p>Dew Point</p>
           <p v-if="detailDataTexts" class="data-text">
             {{ dewPoint }}
@@ -99,7 +99,7 @@ export default {
   font-size: large;
 }
 
-.hr {
+.aqi-color {
   width: 50px;
   height: 10px;
 }
@@ -127,15 +127,14 @@ export default {
 .aqi-brown {
   background-color: brown;
 }
-
 @media screen and (max-width: 396px) {
-  .visibility-data {
-    margin-top: 40px;
-  }
   .details-info-line-1,
   .details-info-line-2,
   .details-info-line-3 {
     justify-content: space-evenly;
+  }
+  .aqi-color {
+    margin: 0px;
   }
 }
 </style>
