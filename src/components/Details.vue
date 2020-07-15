@@ -13,7 +13,7 @@
           <p v-if="detailDataTexts">{{ uvi }}</p>
         </div>
         <div class="uvi-container detail-containers col-md-2 col-4">
-          <i class="fas fa-tint animation-translateY-5px-2s"></i>
+          <i class="fas fa-tint animation-translateY-5px-3s"></i>
           <p>Humidity</p>
           <p v-if="detailDataTexts">{{ humidity }}%</p>
         </div>

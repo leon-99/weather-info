@@ -1,6 +1,6 @@
 /* animations */
 
-@keyframes rotate-360-3s {
+@keyframes rotate-360 {
     0% {
         transform: rotate(0deg);
     }
@@ -10,12 +10,19 @@
     }
 }
 
-@keyframes translateX-5px-2s {
+@keyframes translateX-5px-5 {
     0% {
         transform: translateX(0px);
     }
+    25% {
+        transform: translateX(-5px);
+    }
 
     50% {
+        transform: translateX(0px);
+    }
+
+    75% {
         transform: translateX(5px);
     }
 
@@ -24,7 +31,7 @@
     }
 }
 
-@keyframes translateY-5px-2s {
+@keyframes translateY-5px {
     0% {
         transform: translateY(0px);
     }
@@ -42,9 +49,11 @@
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.3);
     }
+
     100% {
         transform: scale(1);
     }
@@ -54,9 +63,11 @@
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.3);
     }
+
     100% {
         transform: scale(1);
     }
@@ -67,14 +78,15 @@
 }
 
 .animation-rotate-360-3s {
-    animation: rotate-360-3s linear 3s infinite;
+    animation: rotate-360 linear 3s infinite;
 }
 
-.animation-translateY-5px-2s {
-    animation: translateY-5px-2s linear 2s infinite;
+.animation-translateY-5px-3s {
+    animation: translateY-5px linear 3s infinite;
 }
+
 .animation-translateX-5px-2s {
-    animation: translateX-5px-2s linear 2s infinite;
+    animation: translateX-5px-5 linear 3s infinite;
 }
 
 .animation-scale-13-3s {

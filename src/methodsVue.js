@@ -123,8 +123,8 @@ export const methodsVue = {
         for (const key in this.details) {
             this.details[key] = '-'
         }
-        this.country = "Not Found!"
-        this.city = e.target.firstChild.value;
+        this.details.country = "Not Found!"
+        this.details.city = e.target.firstChild.value;
         this.windDegree = '0'
     },
     setAQIColor(data) {
