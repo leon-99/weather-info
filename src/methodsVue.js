@@ -105,15 +105,15 @@ export const methodsVue = {
     },
     changeDegree() {
         if (this.degreeSymbol === '℃') {
-            this.details.mainTemp = tempConverter.CtoF(this.mainTemp);
-            this.details.feelsLikeTemp = tempConverter.CtoF(this.feelsLikeTemp);
-            this.details.dewPoint = tempConverter.CtoF(this.dewPoint);
-            this.details.degreeSymbol = '℉';
+            this.details.mainTemp = tempConverter.CtoF(this.details.mainTemp);
+            this.details.feelsLikeTemp = tempConverter.CtoF(this.details.feelsLikeTemp);
+            this.details.dewPoint = tempConverter.CtoF(this.details.dewPoint);
+            this.degreeSymbol = '℉';
         } else {
-            this.details.mainTemp = tempConverter.FtoC(this.mainTemp);
-            this.details.feelsLikeTemp = tempConverter.FtoC(this.feelsLikeTemp);
-            this.details.dewPoint = tempConverter.FtoC(this.dewPoint);
-            this.details.degreeSymbol = '℃';
+            this.details.mainTemp = tempConverter.FtoC(this.details.mainTemp);
+            this.details.feelsLikeTemp = tempConverter.FtoC(this.details.feelsLikeTemp);
+            this.details.dewPoint = tempConverter.FtoC(this.details.dewPoint);
+            this.degreeSymbol = '℃';
         }
         // ℃ ℉
     },
@@ -147,5 +147,9 @@ export const methodsVue = {
     },
     closeMultipleAlerts() {
         this.$modal.hide('multiple-alerts');
+    },
+    getCurrentYear() {
+        let date = new Date();
+        this.currentYear = date.getFullYear();
     }
 }

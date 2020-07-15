@@ -1,4 +1,5 @@
 export const dataVue = {
+    currentYear: null,
     API_KEY: '4cf3f07b09324b46a99f7028b6758a4e',
     API_UNITS: 'M',
     localTime: null, 
@@ -14,6 +15,7 @@ export const dataVue = {
     multipleAlertsTitleText: false,
     multipleAlertsTitle: '',
     multipleAlertsArray: [],
+    degreeSymbol: '℃',
     windDegree: '',
     details: {
         iconId: null,
@@ -21,7 +23,6 @@ export const dataVue = {
         country: null,
         mainTemp: null,
         feelsLikeTemp: null,
-        degreeSymbol: '℃',
         condition: null,
         clouds: '',
         uvi: '',

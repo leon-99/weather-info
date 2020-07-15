@@ -87,6 +87,7 @@
             :degreeSymbol="this.details.degreeSymbol"
             :aqiColor="this.aqiColor"
           />
+          <Footer :currentYear="this.currentYear"/>
         </div>
       </div>
     </div>
@@ -97,6 +98,7 @@
 import SearchBar from "./components/SearchBar";
 import MainInfo from "./components/MainInfo";
 import Details from "./components/Details";
+import Footer from "./components/Footer";
 import { dataVue } from "./dataVue";
 import { methodsVue } from "./methodsVue";
 export default {
@@ -104,7 +106,8 @@ export default {
   components: {
     SearchBar,
     MainInfo,
-    Details
+    Details,
+    Footer
   },
   data() {
     return dataVue;
@@ -112,6 +115,7 @@ export default {
   methods: methodsVue,
   mounted() {
     this.locateUserPosition();
+    this.getCurrentYear();
   }
 };
 </script>
