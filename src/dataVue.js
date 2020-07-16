@@ -1,5 +1,6 @@
 export const dataVue = {
     currentYear: null,
+    time: null,
     API_KEY: '4cf3f07b09324b46a99f7028b6758a4e',
     API_UNITS: 'M',
     localTime: null, 

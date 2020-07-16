@@ -9,6 +9,7 @@
           <span>{{ city }}</span>,
           <span>{{ country }}</span>
         </h3>
+        <h6 v-if="infoTexts">{{ time }}</h6>
         <p class="alert-title" v-if="alertTitleText" @click="$emit('showSingleAlertFunction')">
           <span>
             <i class="fas fa-exclamation-circle"></i>
@@ -59,6 +60,7 @@
 export default {
   name: "MainInfo",
   props: [
+    "time",
     "iconId",
     "city",
     "country",

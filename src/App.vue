@@ -55,6 +55,7 @@
                 @showSingleAlertFunction="showSingleAlert"
                 @showMultipleAlertsFunction="showMultipleAlerts"
                 @changeDegreeFunction="changeDegree"
+                :time="this.time"
                 :city="this.details.city"
                 :country="this.details.country"
                 :condition="this.details.condition"

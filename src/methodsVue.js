@@ -4,7 +4,18 @@ import {
 import {
     tempConverter
 } from "./temp-converter";
+const cityOffsets = require('timezone-name-offsets');
 export const methodsVue = {
+    calcTime(offset) {
+        const d = new Date();
+        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        const nd = new Date(utc + (3600000 * offset));
+        return {
+            hours: nd.getHours(),
+            minutes: nd.getMinutes(),
+            seconds: nd.getSeconds()
+        }
+    },
     locateUserPosition() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(res => {
@@ -64,6 +75,11 @@ export const methodsVue = {
         this.setBg(data);
         this.setAQIColor(data);
         this.getAlerts(data);
+        this.setTime(data);
+    },
+    setTime(data) {
+        let now = this.calcTime(cityOffsets[data.data[0].timezone] / 60)
+        this.time = `${now.hours.toString().length === 1 ? `0${now.hours}` : now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`
     },
     async getAlerts(dataPassed) {
         const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${dataPassed.data[0].city_name}&key=${this.API_KEY}`);
