@@ -107,7 +107,7 @@ export const methodsVue = {
         let id = data.data[0].weather.code;
         if (data.data[0].pod === 'd') {
             id >= 200 && id <= 531 ? this.bgImage = 'rain-d' :
-                id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'rain-d' :
+                id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
                 id >= 600 && id <= 622 ? this.bgImage = 'snow-d' :
                 id >= 803 && id <= 804 ? this.bgImage = 'cloudy-d' :
                 this.bgImage = 'clear-d'
