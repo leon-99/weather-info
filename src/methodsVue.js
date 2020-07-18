@@ -69,10 +69,11 @@ export const methodsVue = {
         this.details.visibility = `${Math.round(data.data[0].vis)}km`;
         this.details.aqi = data.data[0].aqi;
         this.details.slp = 'N/A'
-        this.details.windSpeed = `${Math.round(data.data[0].wind_spd)}m/s`
+        this.details.windSpeed = `${Math.round(data.data[0].wind_spd * 2.237)}mph`
         this.details.windDir = data.data[0].wind_cdir;
         this.windDegree = data.data[0].wind_dir;
-        this.setBg(data);
+        this.bgImage = 'clear-d'
+        // this.setBg(data);
         this.setAQIColor(data);
         this.getAlerts(data);
         this.setTime(data);

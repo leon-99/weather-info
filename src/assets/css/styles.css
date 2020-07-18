@@ -18,10 +18,10 @@
     text-align: center;
 }
 
-.clear-d {
-    background-image: url('../bg-images/clear-d.jpg');
+ .clear-d {
+    background-image: url('../bg-images/clear-d-m.jpg');
 }
-
+/*
 .clear-n {
     background-image: url('../bg-images/clear-n.jpg');
 }
@@ -56,7 +56,7 @@
 
 .snow-n {
     background-image: url('../bg-images/snow-n.jpg');
-}
+} */
 
 .alert-body-title {
     color: orange;
@@ -89,9 +89,9 @@
 
 @media (min-width: 768px) {
     .clear-d {
-        background-image: url('../bg-images/clear-d-desktop.jpg');
+        background-image: url('../bg-images/clear-d-d.jpg');
     }
-
+ /*
     .clear-n {
         background-image: url('../bg-images/clear-n-desktop.jpg');
     }
@@ -126,5 +126,5 @@
 
     .foggy-n {
         background-image: url('../bg-images/foggy-n-desktop.jpg');
-    }
+    } */
 }

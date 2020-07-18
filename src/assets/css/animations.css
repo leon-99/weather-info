@@ -73,6 +73,27 @@
     }
 }
 
+@keyframes rotateY-360 {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: white;
+    }
+    50% {
+        color: transparent;
+    }
+    100% {
+        color: white;
+    }
+}
+
 .animation-breath {
     animation: breath linear 2s infinite;
 }
@@ -91,4 +112,12 @@
 
 .animation-scale-13-3s {
     animation: scale-13-3s linear 3s infinite;
+}
+
+.animation-rotateY-360 {
+    animation: rotateY-360 linear 3s infinite;
+}
+
+.animation-colorChange {
+    animation: colorChange linear 2s infinite;
 }

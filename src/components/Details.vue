@@ -18,14 +18,14 @@
           <p v-if="detailDataTexts">{{ humidity }}%</p>
         </div>
         <div class="pressure-container detail-containers col-md-2 col-4">
-          <i class="fas fa-tachometer-alt"></i>
+          <i class="fas fa-tachometer-alt animation-rotateY-360"></i>
           <p>Pressure</p>
           <p v-if="detailDataTexts">{{ pressure }}mb</p>
         </div>
       </div>
       <div class="details-info-line-2 row">
         <div class="visibility-container detail-containers col-md-2 col-4">
-          <i class="fas fa-eye"></i>
+          <i class="fas fa-eye animation-colorChange"></i>
           <p>Visibility</p>
           <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
         </div>

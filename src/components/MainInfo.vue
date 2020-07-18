@@ -47,7 +47,7 @@
             Wind {{ windSpeed }}
             <i
               class="fas fa-long-arrow-alt-up  wind-degree-arrow ml-2" 
-              :style="{transform: 'rotate(' + windDegree + 'deg)'}"
+              :style="{transform: 'rotate(-' + windDegree + 'deg)'}"
             ></i>
           </h5>
         </div>
