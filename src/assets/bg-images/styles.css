@@ -18,17 +18,18 @@
     text-align: center;
 }
 
- .clear-d {
-    background-image: url('../bg-images/clear-d-m.jpg');
-}
-
-.cloudy-d {
-    background-image: url('../bg-images/cloudy-d-m.jpg');
+.clear-d {
+    background-image: url('../bg-images/clear-d.jpg');
 }
 
 .clear-n {
     background-image: url('../bg-images/clear-n.jpg');
 }
+
+.cloudy-d {
+    background-image: url('../bg-images/cloudy-d.jpg');
+}
+
 .cloudy-n {
     background-image: url('../bg-images/cloudy-n.jpg');
 }
@@ -88,18 +89,17 @@
 
 @media (min-width: 768px) {
     .clear-d {
-        background-image: url('../bg-images/clear-d-d.jpg');
+        background-image: url('../bg-images/clear-d-desktop.jpg');
     }
 
-    .cloudy-d {
-        background-image: url('../bg-images/cloudy-d-d.jpg');
-    }
- 
     .clear-n {
         background-image: url('../bg-images/clear-n-desktop.jpg');
     }
 
-    
+    .cloudy-d {
+        background-image: url('../bg-images/cloudy-d-desktop.jpg');
+    }
+
     .cloudy-n {
         background-image: url('../bg-images/cloudy-n-desktop.jpg');
     }
