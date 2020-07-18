@@ -73,6 +73,27 @@
     }
 }
 
+@keyframes scaleY {
+    0% {
+        transform: scaleY(1);
+    }
+
+    25% {
+        transform: scaleY(0.8);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+
+    75% {
+        transform: scaleY(1.3);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
 @keyframes rotateY-360 {
     0% {
         transform: rotateY(0deg);
@@ -92,6 +113,10 @@
     100% {
         color: white;
     }
+}
+
+.animation-scaleY {
+    animation: scaleY linear 2s infinite;
 }
 
 .animation-breath {

@@ -23,7 +23,7 @@ export default {};
   border: rgba(0, 0, 0, 0.3) 1px solid;
   padding: 5px;
   border-radius: 0 10px 0 10px;
-  transition: all ease 0.3s;
+  transition: all linear 0.3s;
   color: white;
   text-align: center;
 }

@@ -71,7 +71,7 @@ export const methodsVue = {
         this.details.slp = 'N/A'
         this.details.windSpeed = `${Math.round(data.data[0].wind_spd * 2.237)}mph`
         this.details.windDir = data.data[0].wind_cdir;
-        this.windDegree = data.data[0].wind_dir;
+        this.windDegree = `${data.data[0].wind_dir}`;
         this.setBg(data);
         this.setAQIColor(data);
         this.getAlerts(data);
@@ -142,6 +142,7 @@ export const methodsVue = {
         this.details.country = "Not Found!"
         this.details.city = e.target.firstChild.value;
         this.windDegree = '0'
+        this.aqiColor = 'white'
     },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;

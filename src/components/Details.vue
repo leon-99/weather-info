@@ -18,7 +18,7 @@
           <p v-if="detailDataTexts">{{ humidity }}%</p>
         </div>
         <div class="pressure-container detail-containers col-md-2 col-4">
-          <i class="fas fa-tachometer-alt animation-rotateY-360"></i>
+          <i class="fas fa-tachometer-alt"></i>
           <p>Pressure</p>
           <p v-if="detailDataTexts">{{ pressure }}mb</p>
         </div>
@@ -30,18 +30,18 @@
           <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
         </div>
         <div class="dew-container detail-containers col-md-2 col-4">
-          <i class="fas fa-lungs animation-scale-13-3s"></i>
+          <i class="fas fa-lungs animation-scale-13-3s" :class="aqiColor"></i>
           <p>Air Quality</p>
           <p v-if="detailDataTexts">{{ aqi }}</p>
-          <hr class="aqi-color" :class="aqiColor" />
+          <!-- <hr class="aqi-color" :class="aqiColor" /> -->
         </div>
         <div class="dew-container detail-containers col-md-2 col-4">
-          <i class="fas fa-water"></i>
+          <i class="fas fa-water animation-scaleY"></i>
           <p>Sea Level</p>
           <p v-if="detailDataTexts">{{ slp }}</p>
         </div>
         <div class="dew-container detail-containers col-md-2 col-4">
-          <i class="fas fa-tint animation-translateY-5px-2s"></i>
+          <i class="fas fa-tint animation-translateY-5px-3s"></i>
           <p>Dew Point</p>
           <p v-if="detailDataTexts" class="data-text">
             {{ dewPoint }}
@@ -105,27 +105,27 @@ export default {
 }
 
 .aqi-green {
-  background-color: chartreuse;
+  color: rgba(127, 255, 0, 0.7);
 }
 
 .aqi-yellow {
-  background-color: yellow;
+ color: rgba(255, 255, 0, 0.7);
 }
 
 .aqi-orange {
-  background-color: orangered;
+  color: rgba(255, 69, 0, 0.7);
 }
 
 .aqi-red {
-  background-color: red;
+  color: rgba(255, 0, 0, 0.7);
 }
 
 .aqi-purple {
-  background-color: purple;
+ color: rgba(128, 0, 128, 0.7);
 }
 
 .aqi-brown {
-  background-color: brown;
+ color: rgba(165, 42, 42, 0.7);
 }
 @media screen and (max-width: 396px) {
   .details-info-line-1,
