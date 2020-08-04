@@ -1,7 +1,7 @@
 <template>
   <div class="details-container">
     <div class="details-info-container">
-      <div class="details-info-line-1 row">
+      <div class="details-info-line-1 row pb-3">
         <div class="clouds-container detail-containers col-md-3 col-4">
           <i class="fas fa-cloud animation-translateX-5px-2s"></i>
           <p>Clouds</p>
