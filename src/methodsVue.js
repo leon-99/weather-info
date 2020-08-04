@@ -31,6 +31,7 @@ export const methodsVue = {
     async getSearchedData(e) {
         if (e.target.firstChild.value) {
             this.infoTexts = false;
+            this.detailDataTexts = false;
             this.alertTitleText = false;
             this.multipleAlertsTitleText = false;
             this.loading = true;
@@ -51,6 +52,7 @@ export const methodsVue = {
     },
     setData(data) {
         console.log(data)
+        this.detailDataTexts = true;
         this.loading = false;
         this.infoTexts = true;
         this.details.degreeSymbol = '℃';
@@ -61,9 +63,9 @@ export const methodsVue = {
         this.details.condition = data.data[0].weather.description;
         this.details.mainTemp = Math.round(data.data[0].temp);
         this.details.feelsLikeTemp = Math.round(data.data[0].app_temp);
-        this.details.clouds = data.data[0].clouds;
-        this.details.humidity = Math.round(data.data[0].rh);
-        this.details.pressure = Math.round(data.data[0].pres);
+        this.details.clouds = `${data.data[0].clouds}%`;
+        this.details.humidity = `${Math.round(data.data[0].rh)}%`;
+        this.details.pressure = `${Math.round(data.data[0].pres)}mb`;
         this.details.dewPoint = Math.round(data.data[0].dewpt);
         this.details.uvi = Math.round(data.data[0].uv);
         this.details.visibility = `${Math.round(data.data[0].vis)}km`;

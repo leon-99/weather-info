@@ -2,7 +2,7 @@
   <div>
     <div class="search-bar-container">
       <form @submit.prevent="$emit('getSearchedDataFunction', $event)">
-        <input type="text" class="search-bar" placeholder="Find a city" />
+        <input type="text" class="search-bar" placeholder="Find a city" autofocus/>
       </form>
     </div>
   </div>

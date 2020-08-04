@@ -38,7 +38,7 @@
           <br />
           <p class="text__center">Regions</p>
           <p>{{ alert.regions.toString().split(',').join(', ') }}</p>
-          <hr class="hr">
+          <hr class="hr" />
         </div>
         <button class="close-single-alert-btn" @click="closeMultipleAlerts">Close</button>
       </modal>
@@ -46,11 +46,11 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <SearchBar @getSearchedDataFunction="getSearchedData"/>
+              <SearchBar @getSearchedDataFunction="getSearchedData" />
             </div>
           </div>
           <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-md-4 text-center mt-3">
               <MainInfo
                 @showSingleAlertFunction="showSingleAlert"
                 @showMultipleAlertsFunction="showMultipleAlerts"
@@ -74,21 +74,24 @@
                 :windDegree="this.windDegree"
               />
             </div>
+            <div class="col-md-8 mt-5">
+              <Details
+                :loading="this.loading"
+                :clouds="this.details.clouds"
+                :uvi="this.details.uvi"
+                :humidity="this.details.humidity"
+                :pressure="this.details.pressure"
+                :visibility="this.details.visibility"
+                :dewPoint="this.details.dewPoint"
+                :aqi="this.details.aqi"
+                :slp="this.details.slp"
+                :detailDataTexts="this.detailDataTexts"
+                :degreeSymbol="this.details.degreeSymbol"
+                :aqiColor="this.aqiColor"
+              />
+            </div>
           </div>
-          <Details
-            :clouds="this.details.clouds"
-            :uvi="this.details.uvi"
-            :humidity="this.details.humidity"
-            :pressure="this.details.pressure"
-            :visibility="this.details.visibility"
-            :dewPoint="this.details.dewPoint"
-            :aqi="this.details.aqi"
-            :slp="this.details.slp"
-            :detailDataTexts="this.detailDataTexts"
-            :degreeSymbol="this.details.degreeSymbol"
-            :aqiColor="this.aqiColor"
-          />
-          <Footer :currentYear="this.currentYear"/>
+          <Footer :currentYear="this.currentYear" />
         </div>
       </div>
     </div>
@@ -108,7 +111,7 @@ export default {
     SearchBar,
     MainInfo,
     Details,
-    Footer
+    Footer,
   },
   data() {
     return dataVue;
@@ -117,7 +120,7 @@ export default {
   mounted() {
     this.locateUserPosition();
     this.getCurrentYear();
-  }
+  },
 };
 </script>
 
