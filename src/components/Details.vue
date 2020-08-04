@@ -50,7 +50,7 @@
           </div>
           <p v-if="detailDataTexts">{{ aqi }}</p>
         </div>
-        <div class="dew-container detail-containers col-md-3 col-4">
+        <div class="dew-container detail-containers col-md-4 col-4">
           <i class="fas fa-water animation-scaleY"></i>
           <p>Sea Level</p>
            <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
@@ -58,15 +58,14 @@
           </div>
           <p v-if="detailDataTexts">{{ slp }}</p>
         </div>
-        <div class="dew-container detail-containers col-md-3 col-4">
+        <div class="dew-container detail-containers col-md-4 col-4">
           <i class="fas fa-tint animation-translateY-5px-3s"></i>
           <p>Dew Point</p>
            <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
             <span class="sr-only">Loading...</span>
           </div>
           <p v-if="detailDataTexts" class="data-text">
-            {{ dewPoint }}
-            <span>{{ degreeSymbol }}</span>
+            {{ dewPoint }}{{ degreeSymbol }}
           </p>
         </div>
       </div>
