@@ -1,5 +1,5 @@
 <template>
-  <div class="footer text-center mt-5">
+  <div class="footer text-center mt-4">
     <p class="d-inline-block">&copy; {{ currentYear }} Leon Made with</p>
     <img src="../assets/heart.svg" class="footer-heart animation-breath" />
   </div>

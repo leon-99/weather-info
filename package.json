@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "register-service-worker": "^1.7.1",
+    "simplebar-vue": "^1.5.1",
     "timezone-name-offsets": "^1.0.2",
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.3"

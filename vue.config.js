@@ -6,6 +6,20 @@ module.exports = {
         msTileColor: '#000000',
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'black',
+        workboxOptions: {
+          runtimeCaching: [
+            {
+              urlPattern: new RegExp("^https://api.weatherbit.io"),
+              handler: "networkFirst",
+              options: {
+                cacheName: "covid-data",
+                cacheableResponse: {
+                  statuses: [0, 200]
+                }
+              }
+            }
+          ]
+        },
         manifestOptions: {
           icons: [
             {
