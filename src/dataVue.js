@@ -6,7 +6,7 @@ export const dataVue = {
     localTime: null, 
     infoTexts: false,
     loading: true,
-    bgImage: 'cloudy-d',
+    bgImage: 'cloudy-n',
     detailDataTexts: true,
     aqiColor: '',
     alertTitleText: false,
