@@ -50,7 +50,7 @@
                 <SearchBar @getSearchedDataFunction="getSearchedData" />
               </div>
             </div>
-            <div class="row">
+            <div class="row align-items-center">
               <div class="col-md-4 text-center mt-3">
                 <MainInfo
                   @showSingleAlertFunction="showSingleAlert"

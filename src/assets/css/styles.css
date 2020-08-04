@@ -10,7 +10,7 @@
 }
 
 .bg-container-inner {
-    min-height: 100%;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
 }
 

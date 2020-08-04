@@ -1,5 +1,5 @@
 <template>
-  <div class="footer text-center mt-4">
+  <div class="footer text-center mt-5">
     <p class="d-inline-block">&copy; {{ currentYear }} Leon Made with</p>
     <img src="../assets/heart.svg" class="footer-heart animation-breath" />
   </div>
@@ -14,6 +14,7 @@ export default {
 
 <style scoped>
 .footer {
+  height: 100%;
   padding-bottom: 10px;
   color: white;
 }
