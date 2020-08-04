@@ -138,6 +138,7 @@ export const methodsVue = {
     showNotFound(e) {
         this.loading = false;
         this.infoTexts = true;
+        this.detailDataTexts = true;
         for (const key in this.details) {
             this.details[key] = '-'
         }
