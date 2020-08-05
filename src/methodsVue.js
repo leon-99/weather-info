@@ -57,6 +57,8 @@ export const methodsVue = {
         this.infoTexts = true;
         data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d` :
             this.details.iconId = `owf-${data.data[0].weather.code}-n`
+        data.data[0].country_code === 'US' ? this.details.stateCode = `${data.data[0].state_code} ,` : 
+            this.details.stateCode = '';
         this.details.city = data.data[0].city_name;
         this.details.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
         this.details.condition = data.data[0].weather.description;
@@ -133,13 +135,13 @@ export const methodsVue = {
     setWindmillSpeed(data) {
         let speed = Math.round(data.data[0].wind_spd * 2.237);
         speed < 1 ? this.pinmillSpeed = '0s' :
-        speed >= 1 && speed <= 3 ? this.windmillSpeed = '5s' :
-        speed >= 4 && speed <= 7 ? this.windmillSpeed = '3s' :
-        speed >= 8 && speed <= 12 ? this.windmillSpeed = '2s' :
-        speed >= 13 && speed <= 18 ? this.windmillSpeed = '1s' :
-        speed >= 19 && speed <= 24 ? this.windmillSpeed = '0.8s' :
-        speed >= 25 && speed <= 31 ? this.windmillSpeed = '0.5s' :
-        this.windmillSpeed = '0.3s';
+            speed >= 1 && speed <= 3 ? this.windmillSpeed = '5s' :
+            speed >= 4 && speed <= 7 ? this.windmillSpeed = '3s' :
+            speed >= 8 && speed <= 12 ? this.windmillSpeed = '2s' :
+            speed >= 13 && speed <= 18 ? this.windmillSpeed = '1s' :
+            speed >= 19 && speed <= 24 ? this.windmillSpeed = '0.8s' :
+            speed >= 25 && speed <= 31 ? this.windmillSpeed = '0.5s' :
+            this.windmillSpeed = '0.3s';
     },
     changeUnits() {
         if (this.details.mainTemp.slice(-1) === '℃') {

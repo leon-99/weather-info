@@ -58,6 +58,7 @@
                   @change-units-function="changeUnits"
                   :time="this.time"
                   :city="this.details.city"
+                  :stateCode="this.details.stateCode"
                   :country="this.details.country"
                   :condition="this.details.condition"
                   :mainTemp="this.details.mainTemp"

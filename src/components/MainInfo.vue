@@ -7,6 +7,7 @@
         </div>
         <h3 v-if="infoTexts" class="city-name">
           <span>{{ city }}</span>,
+          <span>{{ stateCode }}</span>
           <span>{{ country }}</span>
         </h3>
         <h6 v-if="infoTexts">{{ time }}</h6>
@@ -74,6 +75,7 @@ export default {
     "time",
     "iconId",
     "city",
+    "stateCode",
     "country",
     "condition",
     "mainTemp",

@@ -22,6 +22,7 @@ export const dataVue = {
         iconId: null,
         city: null,
         country: null,
+        stateCode: '',
         mainTemp: null,
         feelsLikeTemp: null,
         condition: null,
