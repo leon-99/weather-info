@@ -18,44 +18,47 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
- .clear-d {
-    background-image: url('../bg-images/clear-d-m.jpg');
+.clear-d {
+    background-image: url('../bg-images/clear-d-d.jpg');
 }
 
 .cloudy-d {
-    background-image: url('../bg-images/cloudy-d-m.jpg');
+    background-image: url('../bg-images/cloudy-d-d.jpg');
 }
 
 .clear-n {
-    background-image: url('../bg-images/clear-n.jpg');
+    background-image: url('../bg-images/clear-n-d.jpg');
 }
+
+
 .cloudy-n {
-    background-image: url('../bg-images/cloudy-n.jpg');
+    background-image: url('../bg-images/cloudy-n-d.jpg');
 }
 
 .rain-d {
-    background-image: url('../bg-images/rain-d.jpg');
+    background-image: url('../bg-images/rain-d-d.jpg');
 }
 
 .rain-n {
-    background-image: url('../bg-images/rain-n.jpg');
-}
-
-.foggy-d {
-    background-image: url('../bg-images/foggy-d.jpg');
-}
-
-.foggy-n {
-    background-image: url('../bg-images/foggy-n.jpg');
+    background-image: url('../bg-images/rain-n-d.jpg');
 }
 
 .snow-d {
-    background-image: url('../bg-images/snow-d.jpg');
+    background-image: url('../bg-images/snow-d-d.jpg');
 }
 
 .snow-n {
-    background-image: url('../bg-images/snow-n.jpg');
+    background-image: url('../bg-images/snow-n-d.jpg');
 }
+
+.foggy-d {
+    background-image: url('../bg-images/foggy-d-d.jpg');
+}
+
+.foggy-n {
+    background-image: url('../bg-images/foggy-n-d.jpg');
+}
+
 
 .alert-body-title {
     color: orange;
@@ -86,45 +89,43 @@
     margin-bottom: 30px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .clear-d {
-        background-image: url('../bg-images/clear-d-d.jpg');
+        background-image: url('../bg-images/clear-d-m.jpg');
     }
-
-    .cloudy-d {
-        background-image: url('../bg-images/cloudy-d-d.jpg');
-    }
- 
-    .clear-n {
-        background-image: url('../bg-images/clear-n-desktop.jpg');
-    }
-
     
+    .cloudy-d {
+        background-image: url('../bg-images/cloudy-d-m.jpg');
+    }
+    
+    .clear-n {
+        background-image: url('../bg-images/clear-n-m.jpg');
+    }
     .cloudy-n {
-        background-image: url('../bg-images/cloudy-n-desktop.jpg');
+        background-image: url('../bg-images/cloudy-n-m.jpg');
     }
-
+    
     .rain-d {
-        background-image: url('../bg-images/rain-d-desktop.jpg');
+        background-image: url('../bg-images/rain-d-m.jpg');
     }
-
+    
     .rain-n {
-        background-image: url('../bg-images/rain-n-desktop.jpg');
+        background-image: url('../bg-images/rain-n-m.jpg');
     }
-
-    .snow-d {
-        background-image: url('../bg-images/snow-d-desktop.jpg');
-    }
-
-    .snow-n {
-        background-image: url('../bg-images/snow-n-desktop.jpg');
-    }
-
+    
     .foggy-d {
-        background-image: url('../bg-images/foggy-d-desktop.jpg');
+        background-image: url('../bg-images/foggy-d-m.jpg');
     }
-
+    
     .foggy-n {
-        background-image: url('../bg-images/foggy-n-desktop.jpg');
+        background-image: url('../bg-images/foggy-n-m.jpg');
+    }
+    
+    .snow-d {
+        background-image: url('../bg-images/snow-d-m.jpg');
+    }
+    
+    .snow-n {
+        background-image: url('../bg-images/snow-n-m.jpg');
     }
 }
