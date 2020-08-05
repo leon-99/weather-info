@@ -17,7 +17,7 @@
           <p class="text-warning text-center">{{ alertTitle }}</p>
           <p>{{ alertBody }}</p>
           <br />
-          <p class="text__center">Regions</p>
+          <p class="text-center">Regions</p>
           <p>{{ alertRegions }}</p>
           <button class="close-single-alert-btn" @click="closeSingleAlert">Close</button>
         </modal>
@@ -34,10 +34,10 @@
       "
         >
           <div v-for="alert in multipleAlertsArray" :key="multipleAlertsArray.indexOf(alert)">
-            <p class="text-warning text__center">{{ alert.title }}</p>
+            <p class="text-warning text-center">{{ alert.title }}</p>
             <p>{{ alert.description }}</p>
             <br />
-            <p class="text__center">Regions</p>
+            <p class="text-center">Regions</p>
             <p>{{ alert.regions.toString().split(',').join(', ') }}</p>
             <hr class="hr" />
           </div>
@@ -53,9 +53,9 @@
             <div class="row align-items-center">
               <div class="col-md-4 text-center mt-3">
                 <MainInfo
-                  @showSingleAlertFunction="showSingleAlert"
-                  @showMultipleAlertsFunction="showMultipleAlerts"
-                  @changeDegreeFunction="changeDegree"
+                  @show-single-alert-function="showSingleAlert"
+                  @show-multiple-alerts-function="showMultipleAlerts"
+                  @change-degree-function="changeDegree"
                   :time="this.time"
                   :city="this.details.city"
                   :country="this.details.country"
@@ -73,6 +73,7 @@
                   :windSpeed="this.details.windSpeed"
                   :windDir="this.details.windDir"
                   :windDegree="this.windDegree"
+                  :windmillSpeed="this.windmillSpeed"
                 />
               </div>
               <div class="col-md-8 mt-5">

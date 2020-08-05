@@ -10,7 +10,7 @@
           <span>{{ country }}</span>
         </h3>
         <h6 v-if="infoTexts">{{ time }}</h6>
-        <p class="alert-title" v-if="alertTitleText" @click="$emit('showSingleAlertFunction')">
+        <p class="alert-title" v-if="alertTitleText" @click="$emit('show-single-alert-function')">
           <span>
             <i class="fas fa-exclamation-circle"></i>
           </span>
@@ -19,7 +19,7 @@
         <p
           class="alert-title"
           v-if="multipleAlertsTitleText"
-          @click="$emit('showMultipleAlertsFunction')"
+          @click="$emit('show-multiple-alerts-function')"
         >{{ multipleAlertsTitle }}</p>
       </div>
       <div class="icon-container">
@@ -34,7 +34,7 @@
           <div class="spinner-border" role="status" v-if="loading">
             <span class="sr-only">Loading...</span>
           </div>
-          <h2 v-if="infoTexts" class="main-temp" @click="$emit('changeDegreeFunction')">
+          <h2 v-if="infoTexts" class="main-temp" @click="$emit('change-degree-function')">
             <span>{{mainTemp}}</span>
             <span>{{ degreeSymbol }}</span>
           </h2>
@@ -44,9 +44,14 @@
             <span>{{ degreeSymbol }}</span>
           </h5>
           <h5 class="mt-5">
+            <span>
+              <img src="../assets/pinmill.svg" alt class="windmill animation-rotate-windmill" 
+              :style="{animationDuration: windmillSpeed}"
+              />
+            </span>
             Wind {{ windSpeed }}
             <i
-              class="fas fa-long-arrow-alt-down  wind-degree-arrow ml-2" 
+              class="fas fa-long-arrow-alt-down wind-degree-arrow ml-2"
               :style="{transform: 'rotate(' + windDegree + 'deg)'}"
             ></i>
           </h5>
@@ -76,8 +81,9 @@ export default {
     "multipleAlertsTitleText",
     "windSpeed",
     "windDir",
-    "windDegree"
-  ]
+    "windDegree",
+    "windmillSpeed"
+  ],
 };
 </script>
 
@@ -125,5 +131,10 @@ export default {
 
 .wind-degree-arrow {
   transition: transform cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s;
+}
+
+.windmill {
+  vertical-align: middle;
+  height: 40px;
 }
 </style>

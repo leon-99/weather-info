@@ -6,7 +6,7 @@ export const dataVue = {
     localTime: null, 
     infoTexts: false,
     loading: true,
-    bgImage: 'cloudy-n',
+    bgImage: 'cloudy-d',
     detailDataTexts: true,
     aqiColor: '',
     alertTitleText: false,
@@ -18,6 +18,7 @@ export const dataVue = {
     multipleAlertsArray: [],
     degreeSymbol: '℃',
     windDegree: '',
+    windmillSpeed: '0s',
     details: {
         iconId: null,
         city: null,

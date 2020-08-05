@@ -9,13 +9,13 @@
     background-size: cover;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .bg-container-inner {
     min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-}
-
-.text__center {
-    text-align: center;
 }
 
  .clear-d {
