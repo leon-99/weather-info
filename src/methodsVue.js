@@ -55,23 +55,22 @@ export const methodsVue = {
         this.detailDataTexts = true;
         this.loading = false;
         this.infoTexts = true;
-        this.details.degreeSymbol = '℃';
         data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d` :
             this.details.iconId = `owf-${data.data[0].weather.code}-n`
         this.details.city = data.data[0].city_name;
         this.details.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
         this.details.condition = data.data[0].weather.description;
-        this.details.mainTemp = Math.round(data.data[0].temp);
-        this.details.feelsLikeTemp = Math.round(data.data[0].app_temp);
+        this.details.mainTemp = `${Math.round(data.data[0].temp)}℃`;
+        this.details.feelsLikeTemp = `${Math.round(data.data[0].app_temp)}℃`;
         this.details.clouds = `${data.data[0].clouds}%`;
         this.details.humidity = `${Math.round(data.data[0].rh)}%`;
         this.details.pressure = `${Math.round(data.data[0].pres)}mb`;
-        this.details.dewPoint = Math.round(data.data[0].dewpt);
+        this.details.dewPoint = `${Math.round(data.data[0].dewpt)}℃`;
         this.details.uvi = Math.round(data.data[0].uv);
         this.details.visibility = `${Math.round(data.data[0].vis)}km`;
         this.details.aqi = data.data[0].aqi;
         this.details.slp = 'N/A'
-        this.details.windSpeed = `${Math.round(data.data[0].wind_spd * 2.237)}mph`
+        this.details.windSpeed = `${data.data[0].wind_spd.toFixed(1)}m/s`
         this.details.windDir = data.data[0].wind_cdir;
         this.windDegree = `${data.data[0].wind_dir}`;
         this.setBg(data);
@@ -122,32 +121,6 @@ export const methodsVue = {
                 this.bgImage = 'clear-n'
         }
     },
-    changeDegree() {
-        if (this.degreeSymbol === '℃') {
-            this.details.mainTemp = tempConverter.CtoF(this.details.mainTemp);
-            this.details.feelsLikeTemp = tempConverter.CtoF(this.details.feelsLikeTemp);
-            this.details.dewPoint = tempConverter.CtoF(this.details.dewPoint);
-            this.degreeSymbol = '℉';
-        } else {
-            this.details.mainTemp = tempConverter.FtoC(this.details.mainTemp);
-            this.details.feelsLikeTemp = tempConverter.FtoC(this.details.feelsLikeTemp);
-            this.details.dewPoint = tempConverter.FtoC(this.details.dewPoint);
-            this.degreeSymbol = '℃';
-        }
-        // ℃ ℉
-    },
-    showNotFound(e) {
-        this.loading = false;
-        this.infoTexts = true;
-        this.detailDataTexts = true;
-        for (const key in this.details) {
-            this.details[key] = '-'
-        }
-        this.details.country = "Not Found!"
-        this.details.city = e.target.firstChild.value;
-        this.windDegree = '0'
-        this.aqiColor = 'white'
-    },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;
         aqi > 0 && aqi <= 50 ? this.aqiColor = 'aqi-green' :
@@ -167,6 +140,33 @@ export const methodsVue = {
         speed >= 19 && speed <= 24 ? this.windmillSpeed = '0.8s' :
         speed >= 25 && speed <= 31 ? this.windmillSpeed = '0.5s' :
         this.windmillSpeed = '0.3s';
+    },
+    changeUnits() {
+        if (this.details.mainTemp.slice(-1) === '℃') {
+            this.details.mainTemp = `${tempConverter.CtoF(this.details.mainTemp.split('℃')[0])}℉`;
+            this.details.feelsLikeTemp = `${tempConverter.CtoF(this.details.feelsLikeTemp.split('℃')[0])}℉`;
+            this.details.dewPoint = `${tempConverter.CtoF(this.details.dewPoint.split('℃')[0])}℉`;
+            this.details.windSpeed = `${(this.details.windSpeed.split('m/s')[0] * 2.237).toFixed(1)}mph`
+        } else {
+            this.details.mainTemp = `${tempConverter.FtoC(this.details.mainTemp.split('℉')[0])}℃`;
+            this.details.feelsLikeTemp = `${tempConverter.FtoC(this.details.feelsLikeTemp.split('℉')[0])}℃`;
+            this.details.dewPoint = `${tempConverter.FtoC(this.details.dewPoint.split('℉')[0])}℃`;
+            this.details.windSpeed = `${(this.details.windSpeed.split('mph')[0] / 2.237).toFixed(1)}m/s`
+        }
+        // ℃ ℉
+    },
+    showNotFound(e) {
+        this.loading = false;
+        this.infoTexts = true;
+        this.detailDataTexts = true;
+        for (const key in this.details) {
+            this.details[key] = '-'
+        }
+        this.details.country = "Not Found!"
+        this.details.city = e.target.firstChild.value;
+        this.windDegree = '0'
+        this.aqiColor = 'white'
+        this.windmillSpeed = '0s';
     },
     showSingleAlert() {
         this.$modal.show('single-alert');

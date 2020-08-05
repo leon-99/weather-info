@@ -16,7 +16,6 @@ export const dataVue = {
     multipleAlertsTitleText: false,
     multipleAlertsTitle: '',
     multipleAlertsArray: [],
-    degreeSymbol: '℃',
     windDegree: '',
     windmillSpeed: '0s',
     details: {

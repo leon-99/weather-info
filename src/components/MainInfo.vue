@@ -20,7 +20,12 @@
           class="alert-title"
           v-if="multipleAlertsTitleText"
           @click="$emit('show-multiple-alerts-function')"
-        >{{ multipleAlertsTitle }}</p>
+        >
+          <span>
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+          {{ multipleAlertsTitle }}
+        </p>
       </div>
       <div class="icon-container">
         <div class="spinner-border" role="status" v-if="loading">
@@ -34,19 +39,20 @@
           <div class="spinner-border" role="status" v-if="loading">
             <span class="sr-only">Loading...</span>
           </div>
-          <h2 v-if="infoTexts" class="main-temp" @click="$emit('change-degree-function')">
+          <h2 v-if="infoTexts" class="main-temp" @click="$emit('change-units-function')">
             <span>{{mainTemp}}</span>
-            <span>{{ degreeSymbol }}</span>
           </h2>
           <h5 class="__my2" v-if="infoTexts">
             Feels like
             <span>{{ feelsLikeTemp }}</span>
-            <span>{{ degreeSymbol }}</span>
           </h5>
           <h5 class="mt-5">
             <span>
-              <img src="../assets/pinmill.svg" alt class="windmill animation-rotate-windmill" 
-              :style="{animationDuration: windmillSpeed}"
+              <img
+                src="../assets/pinmill.svg"
+                alt
+                class="windmill animation-rotate-windmill"
+                :style="{animationDuration: windmillSpeed}"
               />
             </span>
             Wind {{ windSpeed }}
@@ -82,7 +88,7 @@ export default {
     "windSpeed",
     "windDir",
     "windDegree",
-    "windmillSpeed"
+    "windmillSpeed",
   ],
 };
 </script>

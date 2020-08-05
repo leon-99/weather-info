@@ -55,7 +55,7 @@
                 <MainInfo
                   @show-single-alert-function="showSingleAlert"
                   @show-multiple-alerts-function="showMultipleAlerts"
-                  @change-degree-function="changeDegree"
+                  @change-units-function="changeUnits"
                   :time="this.time"
                   :city="this.details.city"
                   :country="this.details.country"
