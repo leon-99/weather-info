@@ -63,7 +63,7 @@ export const methodsVue = {
         data.data[0].country_code === 'US' ? this.details.stateCode = `${data.data[0].state_code}, ` :
             this.details.stateCode = '';
 
-        data.data[0].aqi === !null ? this.details.aqi = data.data[0].aqi :
+        data.data[0].aqi !== null ? this.details.aqi = data.data[0].aqi :
             this.details.aqi = 'N/A';
 
         this.details.city = data.data[0].city_name;
