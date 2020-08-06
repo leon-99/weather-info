@@ -5,6 +5,7 @@ import {
     tempConverter
 } from "./temp-converter";
 const cityOffsets = require('timezone-name-offsets');
+
 export const methodsVue = {
     calcTime(offset) {
         const d = new Date();
@@ -23,7 +24,7 @@ export const methodsVue = {
             })
         }
     },
-    async getDefaultData(pos) { // 
+    async getDefaultData(pos) {
         const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}&units=${this.API_UNITS}`)
         const data = await res.json();
         this.setData(data);
@@ -55,10 +56,16 @@ export const methodsVue = {
         this.detailDataTexts = true;
         this.loading = false;
         this.infoTexts = true;
+
         data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d` :
-            this.details.iconId = `owf-${data.data[0].weather.code}-n`
-        data.data[0].country_code === 'US' ? this.details.stateCode = `${data.data[0].state_code} ,` : 
+            this.details.iconId = `owf-${data.data[0].weather.code}-n`;
+
+        data.data[0].country_code === 'US' ? this.details.stateCode = `${data.data[0].state_code}, ` :
             this.details.stateCode = '';
+
+        data.data[0].aqi === !null ? this.details.aqi = data.data[0].aqi :
+            this.details.aqi = 'N/A';
+
         this.details.city = data.data[0].city_name;
         this.details.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
         this.details.condition = data.data[0].weather.description;
@@ -70,11 +77,11 @@ export const methodsVue = {
         this.details.dewPoint = `${Math.round(data.data[0].dewpt)}℃`;
         this.details.uvi = Math.round(data.data[0].uv);
         this.details.visibility = `${Math.round(data.data[0].vis)}km`;
-        this.details.aqi = data.data[0].aqi;
         this.details.slp = 'N/A'
         this.details.windSpeed = `${data.data[0].wind_spd.toFixed(1)}m/s`
         this.details.windDir = data.data[0].wind_cdir;
         this.windDegree = `${data.data[0].wind_dir}`;
+
         this.setBg(data);
         this.setAQIColor(data);
         this.setWindmillSpeed(data);
@@ -125,7 +132,8 @@ export const methodsVue = {
     },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;
-        aqi > 0 && aqi <= 50 ? this.aqiColor = 'aqi-green' :
+        aqi === null ? this.aqiColor = '' :
+            aqi > 0 && aqi <= 50 ? this.aqiColor = 'aqi-green' :
             aqi > 50 && aqi <= 100 ? this.aqiColor = 'aqi-yellow' :
             aqi > 100 && aqi <= 150 ? this.aqiColor = 'aqi-orange' :
             aqi > 150 && aqi <= 200 ? this.aqiColor = 'aqi-red' :
