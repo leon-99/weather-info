@@ -116,40 +116,42 @@ export const methodsVue = {
     },
     setBg(data) {
         let id = data.data[0].weather.code;
-        if (data.data[0].pod === 'd') {
-            id >= 200 && id <= 531 ? this.bgImage = 'rain-d' :
-                id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
-                id >= 600 && id <= 622 ? this.bgImage = 'snow-d' :
-                id >= 803 && id <= 804 ? this.bgImage = 'cloudy-d' :
-                this.bgImage = 'clear-d'
-        } else {
-            id >= 200 && id <= 531 ? this.bgImage = 'rain-n' :
-                id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
-                id >= 600 && id <= 622 ? this.bgImage = 'snow-n' :
-                id >= 803 && id <= 804 ? this.bgImage = 'cloudy-n' :
-                this.bgImage = 'clear-n'
+        if (window.innerWidth >= 768) {
+            if (data.data[0].pod === 'd') {
+                id >= 200 && id <= 531 ? this.bgImage = 'rain-d' :
+                    id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
+                        id >= 600 && id <= 622 ? this.bgImage = 'snow-d' :
+                            id >= 803 && id <= 804 ? this.bgImage = 'cloudy-d' :
+                                this.bgImage = 'clear-d'
+            } else {
+                id >= 200 && id <= 531 ? this.bgImage = 'rain-n' :
+                    id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
+                        id >= 600 && id <= 622 ? this.bgImage = 'snow-n' :
+                            id >= 803 && id <= 804 ? this.bgImage = 'cloudy-n' :
+                                this.bgImage = 'clear-n'
+            }
         }
     },
     setAQIColor(data) {
         let aqi = data.data[0].aqi;
         aqi === null ? this.aqiColor = '' :
             aqi > 0 && aqi <= 50 ? this.aqiColor = 'aqi-green' :
-            aqi > 50 && aqi <= 100 ? this.aqiColor = 'aqi-yellow' :
-            aqi > 100 && aqi <= 150 ? this.aqiColor = 'aqi-orange' :
-            aqi > 150 && aqi <= 200 ? this.aqiColor = 'aqi-red' :
-            aqi > 200 && aqi <= 300 ? this.aqiColor = 'aqi-purple' :
-            this.aqiColor = 'aqi-brown';
+                aqi > 50 && aqi <= 100 ? this.aqiColor = 'aqi-yellow' :
+                    aqi > 100 && aqi <= 150 ? this.aqiColor = 'aqi-orange' :
+                        aqi > 150 && aqi <= 200 ? this.aqiColor = 'aqi-red' :
+                            aqi > 200 && aqi <= 300 ? this.aqiColor = 'aqi-purple' :
+                                this.aqiColor = 'aqi-brown';
     },
     setWindmillSpeed(data) {
         let speed = Math.round(data.data[0].wind_spd * 2.237);
         speed < 1 ? this.pinmillSpeed = '0s' :
             speed >= 1 && speed <= 3 ? this.windmillSpeed = '5s' :
-            speed >= 4 && speed <= 7 ? this.windmillSpeed = '3s' :
-            speed >= 8 && speed <= 12 ? this.windmillSpeed = '2s' :
-            speed >= 13 && speed <= 18 ? this.windmillSpeed = '1s' :
-            speed >= 19 && speed <= 24 ? this.windmillSpeed = '0.8s' :
-            speed >= 25 && speed <= 31 ? this.windmillSpeed = '0.5s' :
-            this.windmillSpeed = '0.3s';
+                speed >= 4 && speed <= 7 ? this.windmillSpeed = '3s' :
+                    speed >= 8 && speed <= 12 ? this.windmillSpeed = '2s' :
+                        speed >= 13 && speed <= 18 ? this.windmillSpeed = '1s' :
+                            speed >= 19 && speed <= 24 ? this.windmillSpeed = '0.8s' :
+                                speed >= 25 && speed <= 31 ? this.windmillSpeed = '0.5s' :
+                                    this.windmillSpeed = '0.3s';
     },
     changeUnits() {
         if (this.details.mainTemp.slice(-1) === '℃') {
