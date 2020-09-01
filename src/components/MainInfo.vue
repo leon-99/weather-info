@@ -33,7 +33,7 @@
           <span class="sr-only">Loading...</span>
         </div>
         <i class="owf owf-4x" :class="iconId" v-if="infoTexts"></i>
-        <h4 class="__my2" v-if="infoTexts">{{ condition }}</h4>
+        <h4 class="my-2" v-if="infoTexts">{{ condition }}</h4>
       </div>
       <div class="main-temp-container">
         <div class="main-temp">

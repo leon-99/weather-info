@@ -3,7 +3,7 @@ import {
 } from "./countryCodes";
 import {
     tempConverter
-} from "./temp-converter";
+} from "./utils";
 const cityOffsets = require('timezone-name-offsets');
 
 export const methodsVue = {
@@ -11,17 +11,11 @@ export const methodsVue = {
         const d = new Date();
         const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
         const nd = new Date(utc + (3600000 * offset));
-        return {
-            hours: nd.getHours(),
-            minutes: nd.getMinutes(),
-            seconds: nd.getSeconds()
-        }
+        return { hours: nd.getHours(), minutes: nd.getMinutes(), seconds: nd.getSeconds() }
     },
     locateUserPosition() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(res => {
-                this.getDefaultData(res)
-            })
+            navigator.geolocation.getCurrentPosition(res => this.getDefaultData(res));
         }
     },
     async getDefaultData(pos) {
@@ -46,25 +40,30 @@ export const methodsVue = {
         }
     },
     filterCity(city) {
-        let searchedCity;
-        city === 'los angeles' || city === 'Los Angeles' || city === 'los Angeles' || city === 'Los angeles' || city === 'LOS ANGELES' ? searchedCity = `https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}` :
-            searchedCity = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.API_KEY}`
-        return searchedCity;
+        return city === 'los angeles' ||
+            city === 'Los Angeles' ||
+            city === 'los Angeles' ||
+            city === 'Los angeles' ||
+            city === 'LOS ANGELES' ? `https://api.weatherbit.io/v2.0/current?city_id=5344994&key=${this.API_KEY}`
+            : `https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.API_KEY}`;
     },
     setData(data) {
-        console.log(data)
         this.detailDataTexts = true;
         this.loading = false;
         this.infoTexts = true;
 
-        data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d` :
-            this.details.iconId = `owf-${data.data[0].weather.code}-n`;
+        if (window.innerWidth >= 768) {
+            this.setBg(data.data[0].weather.code, data.data[0].pod);
+        }
 
-        data.data[0].country_code === 'US' ? this.details.stateCode = `${data.data[0].state_code}, ` :
-            this.details.stateCode = '';
+        data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d`
+            : this.details.iconId = `owf-${data.data[0].weather.code}-n`;
 
-        data.data[0].aqi !== null ? this.details.aqi = data.data[0].aqi :
-            this.details.aqi = 'N/A';
+        data.data[0].country_code === 'US' ? this.details.stateCode = `${data.data[0].state_code}, `
+            : this.details.stateCode = '';
+
+        data.data[0].aqi !== null ? this.details.aqi = data.data[0].aqi
+            : this.details.aqi = 'N/A';
 
         this.details.city = data.data[0].city_name;
         this.details.country = countryCodes.find(i => i.Code === data.data[0].country_code).Name;
@@ -82,18 +81,18 @@ export const methodsVue = {
         this.details.windDir = data.data[0].wind_cdir;
         this.windDegree = `${data.data[0].wind_dir}`;
 
-        this.setBg(data);
-        this.setAQIColor(data);
-        this.setWindmillSpeed(data);
-        this.getAlerts(data);
+        this.setAQIColor(data.data[0].aqi);
+        this.setWindmillSpeed(data.data[0].wind_spd);
+        this.getAlerts(data.data[0].city_name);
         this.setTime(data);
     },
     setTime(data) {
         let now = this.calcTime(cityOffsets[data.data[0].timezone] / 60)
-        this.time = `${now.hours.toString().length === 1 ? `0${now.hours}` : now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`
+        this.time = `${now.hours.toString().length === 1 ? `0${now.hours}` :
+            now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`;
     },
-    async getAlerts(dataPassed) {
-        const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${dataPassed.data[0].city_name}&key=${this.API_KEY}`);
+    async getAlerts(cityName) {
+        const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${cityName}&key=${this.API_KEY}`);
         const data = await res.json();
         if (data.alerts.length > 1) {
             this.setMultipleAlerts(data);
@@ -114,26 +113,22 @@ export const methodsVue = {
         this.multipleAlertsTitle = `${data.alerts.length} Weather Alerts in this area`;
         this.multipleAlertsArray = data.alerts;
     },
-    setBg(data) {
-        let id = data.data[0].weather.code;
-        if (window.innerWidth >= 768) {
-            if (data.data[0].pod === 'd') {
-                id >= 200 && id <= 531 ? this.bgImage = 'rain-d' :
-                    id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
-                        id >= 600 && id <= 622 ? this.bgImage = 'snow-d' :
-                            id >= 803 && id <= 804 ? this.bgImage = 'cloudy-d' :
-                                this.bgImage = 'clear-d'
-            } else {
-                id >= 200 && id <= 531 ? this.bgImage = 'rain-n' :
-                    id === 701 || id === 711 || id === 721 || id === 741 ? this.bgImage = 'foggy-d' :
-                        id >= 600 && id <= 622 ? this.bgImage = 'snow-n' :
-                            id >= 803 && id <= 804 ? this.bgImage = 'cloudy-n' :
-                                this.bgImage = 'clear-n'
-            }
+    setBg(weatherCode, pod) {
+        if (pod === 'd') {
+            weatherCode >= 200 && weatherCode <= 531 ? this.bgImage = 'rain-d' :
+                weatherCode === 701 || weatherCode === 711 || weatherCode === 721 || weatherCode === 741 ? this.bgImage = 'foggy-d' :
+                    weatherCode >= 600 && weatherCode <= 622 ? this.bgImage = 'snow-d' :
+                        weatherCode >= 803 && weatherCode <= 804 ? this.bgImage = 'cloudy-d' :
+                            this.bgImage = 'clear-d';
+        } else {
+            weatherCode >= 200 && weatherCode <= 531 ? this.bgImage = 'rain-n' :
+                weatherCode === 701 || weatherCode === 711 || weatherCode === 721 || weatherCode === 741 ? this.bgImage = 'foggy-d' :
+                    weatherCode >= 600 && weatherCode <= 622 ? this.bgImage = 'snow-n' :
+                        weatherCode >= 803 && weatherCode <= 804 ? this.bgImage = 'cloudy-n' :
+                            this.bgImage = 'clear-n';
         }
     },
-    setAQIColor(data) {
-        let aqi = data.data[0].aqi;
+    setAQIColor(aqi) {
         aqi === null ? this.aqiColor = '' :
             aqi > 0 && aqi <= 50 ? this.aqiColor = 'aqi-green' :
                 aqi > 50 && aqi <= 100 ? this.aqiColor = 'aqi-yellow' :
@@ -142,8 +137,8 @@ export const methodsVue = {
                             aqi > 200 && aqi <= 300 ? this.aqiColor = 'aqi-purple' :
                                 this.aqiColor = 'aqi-brown';
     },
-    setWindmillSpeed(data) {
-        let speed = Math.round(data.data[0].wind_spd * 2.237);
+    setWindmillSpeed(speedMph) {
+        let speed = Math.round(speedMph * 2.237);
         speed < 1 ? this.pinmillSpeed = '0s' :
             speed >= 1 && speed <= 3 ? this.windmillSpeed = '5s' :
                 speed >= 4 && speed <= 7 ? this.windmillSpeed = '3s' :
