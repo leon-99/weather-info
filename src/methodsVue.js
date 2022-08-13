@@ -52,9 +52,11 @@ export const methodsVue = {
         this.loading = false;
         this.infoTexts = true;
 
-        if (window.innerWidth >= 768) {
-            this.setBg(data.data[0].weather.code, data.data[0].pod);
-        }
+        // if (window.innerWidth >= 768) {
+        //     this.setBg(data.data[0].weather.code, data.data[0].pod);
+        // }
+
+        this.setBg(data.data[0].weather.code, data.data[0].pod);
 
         data.data[0].pod === 'd' ? this.details.iconId = `owf-${data.data[0].weather.code}-d`
             : this.details.iconId = `owf-${data.data[0].weather.code}-n`;
