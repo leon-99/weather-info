@@ -89,6 +89,10 @@ export const methodsVue = {
         this.setTime(data);
     },
     setTime(data) {
+        // console.log(data)
+        // console.log(cityOffsets[data.data[0].timezone])
+        // console.log(cityOffsets)
+        // if (data.data[0].timezone === "")
         let now = this.calcTime(cityOffsets[data.data[0].timezone] / 60)
         this.time = `${now.hours.toString().length === 1 ? `0${now.hours}` :
             now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`;
