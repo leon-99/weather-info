@@ -89,13 +89,20 @@ export const methodsVue = {
         this.setTime(data);
     },
     setTime(data) {
+        if (cityOffsets[data.data[0].timezone] != undefined) {
+            let now = this.calcTime(cityOffsets[data.data[0].timezone] / 60)
+            this.time = `${now.hours.toString().length === 1 ? `0${now.hours}` :
+                now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`;
+        } else {
+            let s = new Date();
+            this.time = `${s.getHours()}:${s.getMinutes()}`;
+        }
+        //
         // console.log(data)
-        // console.log(cityOffsets[data.data[0].timezone])
+        console.log(cityOffsets[data.data[0].timezone])
         // console.log(cityOffsets)
         // if (data.data[0].timezone === "")
-        let now = this.calcTime(cityOffsets[data.data[0].timezone] / 60)
-        this.time = `${now.hours.toString().length === 1 ? `0${now.hours}` :
-            now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`;
+
     },
     async getAlerts(cityName) {
         const res = await fetch(`https://api.weatherbit.io/v2.0/alerts?city=${cityName}&key=${this.API_KEY}`);

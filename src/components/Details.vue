@@ -43,7 +43,7 @@
           <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
         </div>
         <div class="dew-container detail-containers col-md-3 col-4">
-          <i class="fas fa-lungs animation-scale-13-3s" :class="aqiColor"></i>
+          <i class="fa-solid fa-lungs animation-scale-13-3s" :class="aqiColor"></i>
           <p>Air Quality</p>
            <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
             <span class="sr-only">Loading...</span>
