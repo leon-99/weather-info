@@ -95,7 +95,7 @@ export const methodsVue = {
                 now.hours}:${now.minutes.toString().length === 1 ? `0${now.minutes}` : now.minutes}`;
         } else {
             let s = new Date();
-            this.time = `${s.getHours()}:${s.getMinutes()}`;
+            this.time = `${s.getHours()}:${s.getMinutes().toString().length === 1 ? `0${s.getMinutes()}` : s.getMinutes()}`;
         }
         //
         // console.log(data)
