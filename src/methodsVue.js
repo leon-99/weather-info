@@ -22,6 +22,7 @@ export const methodsVue = {
         const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&key=${this.API_KEY}&units=${this.API_UNITS}`)
         const data = await res.json();
         this.setData(data);
+        // console.log(data);
     },
     async getSearchedData(e) {
         if (e.target.firstChild.value) {
