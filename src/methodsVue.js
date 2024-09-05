@@ -117,6 +117,9 @@ export const methodsVue = {
         }
     },
     setAlert(data) {
+        navigator.vibrate([
+  100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100,
+]);
         this.alertTitleText = true;
         this.alertTitle = data.alerts[0].title;
         this.alertBody = data.alerts[0].description;
