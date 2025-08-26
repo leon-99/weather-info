@@ -1,30 +1,19 @@
 <template>
-  <div class="footer text-center mt-5">
-    <p class="d-inline-block">&copy; {{ currentYear }} Leon Made with</p>
+  <div class="text-center mt-5 text-white">
+    <p class="d-inline-block mb-0">&copy; {{ currentYear }} Leon Made with</p>
     <img src="../assets/heart.svg" class="footer-heart animation-breath" />
   </div>
 </template>
 
-<script>
-export default {
-  name: "Footer",
-  props: ["currentYear"]
-};
+<script setup>
+defineProps(["currentYear"]);
 </script>
 
 <style scoped>
-.footer {
-  height: 100%;
-  padding-bottom: 10px;
-  color: white;
-}
-p {
-  margin: 0;
-}
 .footer-heart {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    margin-bottom: 5px;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-bottom: 5px;
 }
 </style>

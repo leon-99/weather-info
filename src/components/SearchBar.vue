@@ -1,37 +1,64 @@
 <template>
-  <div>
-    <div class="search-bar-container">
-      <form @submit.prevent="$emit('getSearchedDataFunction', $event)">
-        <input type="text" class="search-bar" placeholder="Find a city" autofocus/>
-      </form>
-    </div>
+  <div class="d-flex justify-center mt-5">
+    <v-form @submit.prevent="$emit('getSearchedDataFunction', $event)" class="w-100" style="max-width: 400px;">
+      <v-text-field
+        v-model="searchQuery"
+        placeholder="Find a city"
+        variant="outlined"
+        density="compact"
+        hide-details
+        autofocus
+        bg-color="rgba(0, 0, 0, 0.3)"
+        color="white"
+        class="search-input"
+        @keyup.enter="handleSearch"
+      >
+        <template v-slot:append>
+          <v-icon color="rgba(255, 255, 255, 0.7)">mdi-magnify</v-icon>
+        </template>
+      </v-text-field>
+    </v-form>
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { ref } from 'vue';
+
+const searchQuery = ref('');
+
+const handleSearch = () => {
+  if (searchQuery.value.trim()) {
+    const event = {
+      target: {
+        firstChild: {
+          value: searchQuery.value
+        }
+      }
+    };
+    emit('getSearchedDataFunction', event);
+    searchQuery.value = '';
+  }
+};
+
+const emit = defineEmits(['getSearchedDataFunction']);
 </script>
 
 <style scoped>
-.search-bar-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-.search-bar {
-  background: rgba(0, 0, 0, 0.3);
+.search-input :deep(.v-field) {
   border: rgba(0, 0, 0, 0.3) 1px solid;
-  padding: 5px;
   border-radius: 0 10px 0 10px;
   transition: all linear 0.3s;
-  color: white;
-  text-align: center;
 }
-.search-bar:focus {
-  outline: none;
+
+.search-input :deep(.v-field:focus-within) {
   border-color: white;
 }
-.search-bar::placeholder {
+
+.search-input :deep(.v-field__input) {
+  text-align: center;
+}
+
+.search-input :deep(.v-field__input::placeholder) {
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }

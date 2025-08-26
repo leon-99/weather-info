@@ -2,48 +2,20 @@
   "name": "weather-info",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^4.5.0",
-    "core-js": "^3.6.5",
-    "font-awesome": "^4.7.0",
-    "register-service-worker": "^1.7.1",
-    "simplebar-vue": "^1.5.1",
-    "timezone-name-offsets": "^1.0.2",
-    "vue": "^2.6.11",
-    "vue-js-modal": "^2.0.0-rc.3"
+    "vue": "^3.4.0",
+    "vuetify": "^3.4.0",
+    "@mdi/font": "^7.4.0",
+    "timezone-name-offsets": "^1.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-plugin-pwa": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@vitejs/plugin-vue": "^4.5.0",
+    "vite": "^5.0.0"
+  }
 }

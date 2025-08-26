@@ -1,98 +1,135 @@
 <template>
   <div class="details-container">
     <div class="details-info-container">
-      <div class="details-info-line-1 row pb-3">
-        <div class="clouds-container detail-containers col-md-3 col-4">
-          <i class="fas fa-cloud animation-translateX-5px-2s"></i>
-          <p>Clouds</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+      <v-row class="details-info-line-1 pb-3">
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-translateX-5px-2s">mdi-cloud</v-icon>
+            <p>Clouds</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts">{{ clouds }}</p>
           </div>
-          <p v-if="detailDataTexts">{{ clouds }}</p>
-        </div>
-        <div class="humid-container detail-containers col-md-3 col-4">
-          <i class="far fa-sun animation-rotate-360-3s"></i>
-          <p>UV Index</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-rotate-360-3s">mdi-weather-sunny</v-icon>
+            <p>UV Index</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts">{{ uvi }}</p>
           </div>
-          <p v-if="detailDataTexts">{{ uvi }}</p>
-        </div>
-        <div class="uvi-container detail-containers col-md-3 col-4">
-          <i class="fas fa-tint animation-translateY-5px-3s"></i>
-          <p>Humidity</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-translateY-5px-3s">mdi-water</v-icon>
+            <p>Humidity</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts">{{ humidity }}</p>
           </div>
-          <p v-if="detailDataTexts">{{ humidity }}</p>
-        </div>
-        <div class="pressure-container detail-containers col-md-3 col-4">
-          <i class="fas fa-tachometer-alt"></i>
-          <p>Pressure</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon">mdi-gauge</v-icon>
+            <p>Pressure</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts">{{ pressure }}</p>
           </div>
-          <p v-if="detailDataTexts">{{ pressure }}</p>
-        </div>
-        <div class="visibility-container detail-containers col-md-3 col-4">
-          <i class="fas fa-eye animation-colorChange"></i>
-          <p>Visibility</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-colorChange">mdi-eye</v-icon>
+            <p>Visibility</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
           </div>
-          <p v-if="detailDataTexts" class="visibility-data">{{ visibility }}</p>
-        </div>
-        <div class="dew-container detail-containers col-md-3 col-4">
-          <i class="fa-solid fa-lungs animation-scale-13-3s" :class="aqiColor"></i>
-          <p>Air Quality</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-scale-13-3s" :class="aqiColor">mdi-lungs</v-icon>
+            <p>Air Quality</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts">{{ aqi }}</p>
           </div>
-          <p v-if="detailDataTexts">{{ aqi }}</p>
-        </div>
-        <div class="dew-container detail-containers col-xl-4 col-md-3 col-4">
-          <i class="fas fa-water animation-scaleY"></i>
-          <p>Sea Level</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-scaleY">mdi-water</v-icon>
+            <p>Sea Level</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts">{{ slp }}</p>
           </div>
-          <p v-if="detailDataTexts">{{ slp }}</p>
-        </div>
-        <div class="dew-container detail-containers col-xl-4 col-md-3 col-4">
-          <i class="fas fa-tint animation-translateY-5px-3s"></i>
-          <p>Dew Point</p>
-           <div class="spinner-border spinner-border-sm" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <div class="detail-containers">
+            <v-icon class="detail-icon animation-translateY-5px-3s">mdi-thermometer</v-icon>
+            <p>Dew Point</p>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              color="white"
+              size="20"
+            ></v-progress-circular>
+            <p v-if="detailDataTexts" class="data-text">
+              {{ dewPoint }}{{ degreeSymbol }}
+            </p>
           </div>
-          <p v-if="detailDataTexts" class="data-text">
-            {{ dewPoint }}{{ degreeSymbol }}
-          </p>
-        </div>
-      </div>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "Details",
-  props: [
-    "clouds",
-    "uvi",
-    "humidity",
-    "pressure",
-    "visibility",
-    "dewPoint",
-    "aqi",
-    "slp",
-    "detailDataTexts",
-    "degreeSymbol",
-    "aqiColor",
-    "aqiColorBar",
-    "aqiConText",
-    "loading"
-  ],
-};
+<script setup>
+defineProps([
+  "clouds",
+  "uvi",
+  "humidity",
+  "pressure",
+  "visibility",
+  "dewPoint",
+  "aqi",
+  "slp",
+  "detailDataTexts",
+  "degreeSymbol",
+  "aqiColor",
+  "aqiColorBar",
+  "aqiConText",
+  "loading"
+]);
 </script>
 
 <style scoped>
@@ -108,6 +145,7 @@ export default {
   color: white;
   text-align: center;
 }
+
 .detail-containers {
   margin: 30px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -117,14 +155,10 @@ export default {
   margin-bottom: 10px;
 }
 
-.spinner-border {
-  margin-top: 10px;
+.detail-icon {
+  font-size: 2rem;
   margin-bottom: 10px;
-}
-
-.aqi-color {
-  width: 50px;
-  height: 10px;
+  color: white;
 }
 
 .aqi-green {
@@ -150,14 +184,10 @@ export default {
 .aqi-brown {
   color: rgba(165, 42, 42, 0.7);
 }
+
 @media screen and (max-width: 396px) {
-  .details-info-line-1,
-  .details-info-line-2,
-  .details-info-line-3 {
+  .details-info-line-1 {
     justify-content: space-evenly;
-  }
-  .aqi-color {
-    margin: 0px;
   }
 }
 </style>

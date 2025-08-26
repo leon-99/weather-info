@@ -1,140 +1,193 @@
 <template>
-  <simplebar data-simplebar-auto-hide="false">
-    <div id="app" class="bg-container" :class="bgImage">
+  <div id="app" class="bg-container" :class="bgImage">
       <div class="bg-container-inner">
-        <modal
-          name="single-alert"
-          class="alert-modal"
-          height="auto"
-          :adaptive="true"
-          :scrollable="true"
-          styles="background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 20px;
-      letterSpacing: 1px;
-      "
-        >
-          <p class="text-warning text-center">{{ alertTitle }}</p>
-          <p>{{ alertBody }}</p>
-          <br />
-          <p class="text-center">Regions</p>
-          <p>{{ alertRegions }}</p>
-          <button class="close-single-alert-btn" @click="closeSingleAlert">Close</button>
-        </modal>
-        <modal
-          name="multiple-alerts"
-          class="alert-modal"
-          height="auto"
-          :adaptive="true"
-          :scrollable="true"
-          styles="background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 20px;
-      letterSpacing: 1px;
-      "
-        >
-          <div v-for="alert in multipleAlertsArray" :key="multipleAlertsArray.indexOf(alert)">
-            <p class="text-warning text-center">{{ alert.title }}</p>
-            <p>{{ alert.description }}</p>
-            <br />
-            <p class="text-center">Regions</p>
-            <p>{{ alert.regions.toString().split(',').join(', ') }}</p>
-            <hr class="hr" />
-          </div>
-          <button class="close-single-alert-btn" @click="closeMultipleAlerts">Close</button>
-        </modal>
+        <!-- Single Alert Dialog -->
+        <v-dialog v-model="showSingleAlertDialog" max-width="500px">
+          <v-card>
+            <v-card-title class="text-warning text-center">
+              {{ alertTitle }}
+            </v-card-title>
+            <v-card-text>
+              <p>{{ alertBody }}</p>
+              <br />
+              <p class="text-center">Regions</p>
+              <p>{{ alertRegions }}</p>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" @click="closeSingleAlert">Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+        <!-- Multiple Alerts Dialog -->
+        <v-dialog v-model="showMultipleAlertsDialog" max-width="600px">
+          <v-card>
+            <v-card-title class="text-center">
+              {{ multipleAlertsTitle }}
+            </v-card-title>
+            <v-card-text>
+              <div v-for="alert in multipleAlertsArray" :key="multipleAlertsArray.indexOf(alert)">
+                <p class="text-warning text-center">{{ alert.title }}</p>
+                <p>{{ alert.description }}</p>
+                <br />
+                <p class="text-center">Regions</p>
+                <p>{{ alert.regions.toString().split(',').join(', ') }}</p>
+                <v-divider class="my-3" v-if="multipleAlertsArray.indexOf(alert) < multipleAlertsArray.length - 1"></v-divider>
+              </div>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" @click="closeMultipleAlerts">Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
         <div class="main">
           <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <SearchBar @getSearchedDataFunction="getSearchedData" />
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-md-4 text-center mt-3">
+            <v-row>
+              <v-col cols="12">
+                <SearchBar @getSearchedDataFunction="handleSearch" />
+              </v-col>
+            </v-row>
+            <v-row align="center">
+              <v-col cols="12" md="4" class="text-center mt-3">
                 <MainInfo
                   @show-single-alert-function="showSingleAlert"
                   @show-multiple-alerts-function="showMultipleAlerts"
-                  @change-units-function="changeUnits"
-                  :time="this.time"
-                  :city="this.details.city"
-                  :stateCode="this.details.stateCode"
-                  :country="this.details.country"
-                  :condition="this.details.condition"
-                  :mainTemp="this.details.mainTemp"
-                  :feelsLikeTemp="this.details.feelsLikeTemp"
-                  :iconId="this.details.iconId"
-                  :loading="this.loading"
-                  :infoTexts="this.infoTexts"
-                  :alertTitleText="this.alertTitleText"
-                  :alertTitle="this.alertTitle"
-                  :multipleAlertsTitle="this.multipleAlertsTitle"
-                  :multipleAlertsTitleText="this.multipleAlertsTitleText"
-                  :degreeSymbol="this.details.degreeSymbol"
-                  :windSpeed="this.details.windSpeed"
-                  :windDir="this.details.windDir"
-                  :windDegree="this.windDegree"
-                  :windmillSpeed="this.windmillSpeed"
+                  @change-units-function="handleUnitChange"
+                  :time="time"
+                  :city="details.city"
+                  :stateCode="details.stateCode"
+                  :country="details.country"
+                  :condition="details.condition"
+                  :mainTemp="details.mainTemp"
+                  :feelsLikeTemp="details.feelsLikeTemp"
+                  :iconId="details.iconId"
+                  :loading="loading"
+                  :infoTexts="infoTexts"
+                  :alertTitleText="alertTitleText"
+                  :alertTitle="alertTitle"
+                  :multipleAlertsTitle="multipleAlertsTitle"
+                  :multipleAlertsTitleText="multipleAlertsTitleText"
+                  :degreeSymbol="details.degreeSymbol"
+                  :windSpeed="details.windSpeed"
+                  :windDir="details.windDir"
+                  :windDegree="windDegree"
+                  :windmillSpeed="windmillSpeed"
                 />
-              </div>
-              <div class="col-md-8 mt-5">
+              </v-col>
+              <v-col cols="12" md="8" class="mt-5">
                 <Details
-                  :loading="this.loading"
-                  :clouds="this.details.clouds"
-                  :uvi="this.details.uvi"
-                  :humidity="this.details.humidity"
-                  :pressure="this.details.pressure"
-                  :visibility="this.details.visibility"
-                  :dewPoint="this.details.dewPoint"
-                  :aqi="this.details.aqi"
-                  :slp="this.details.slp"
-                  :detailDataTexts="this.detailDataTexts"
-                  :degreeSymbol="this.details.degreeSymbol"
-                  :aqiColor="this.aqiColor"
+                  :loading="loading"
+                  :clouds="details.clouds"
+                  :uvi="details.uvi"
+                  :humidity="details.humidity"
+                  :pressure="details.pressure"
+                  :visibility="details.visibility"
+                  :dewPoint="details.dewPoint"
+                  :aqi="details.aqi"
+                  :slp="details.slp"
+                  :detailDataTexts="detailDataTexts"
+                  :degreeSymbol="details.degreeSymbol"
+                  :aqiColor="aqiColor"
                 />
-              </div>
-            </div>
-            <Footer :currentYear="this.currentYear" />
+              </v-col>
+            </v-row>
+            <Footer :currentYear="currentYear" />
           </div>
         </div>
       </div>
-    </div>
-  </simplebar>
+         </div>
 </template>
 
-<script>
-import simplebar from "simplebar-vue";
-import SearchBar from "./components/SearchBar";
-import MainInfo from "./components/MainInfo";
-import Details from "./components/Details";
-import Footer from "./components/Footer";
-import { dataVue } from "./dataVue";
-import { methodsVue } from "./methodsVue";
-export default {
-  name: "App",
-  components: {
-    SearchBar,
-    MainInfo,
-    Details,
-    Footer,
-    simplebar,
-  },
-  data() {
-    return dataVue;
-  },
-  methods: methodsVue,
-  mounted() {
-    this.locateUserPosition();
-    this.getCurrentYear();
-  },
-};
+<script setup>
+import { ref, onMounted } from 'vue'
+import SearchBar from "./components/SearchBar.vue"
+import MainInfo from "./components/MainInfo.vue"
+import Details from "./components/Details.vue"
+import Footer from "./components/Footer.vue"
+
+// Import composables
+import { useWeather } from '@/composables/useWeather'
+import { useUnitConversion } from '@/composables/useUnitConversion'
+import { useLocation } from '@/composables/useLocation'
+import { useDialogs } from '@/composables/useDialogs'
+
+// Initialize composables
+const {
+  loading,
+  infoTexts,
+  detailDataTexts,
+  bgImage,
+  aqiColor,
+  windDegree,
+  windmillSpeed,
+  time,
+  alertTitleText,
+  alertTitle,
+  alertBody,
+  alertRegions,
+  multipleAlertsTitleText,
+  multipleAlertsTitle,
+  multipleAlertsArray,
+  details,
+  getWeatherByCity,
+  getWeatherByCoords
+} = useWeather()
+
+const { changeUnits } = useUnitConversion()
+const { locateUserPosition } = useLocation()
+const {
+  showSingleAlertDialog,
+  showMultipleAlertsDialog,
+  showSingleAlert,
+  closeSingleAlert,
+  showMultipleAlerts,
+  closeMultipleAlerts
+} = useDialogs()
+
+// Current year
+const currentYear = ref(null)
+
+// Handle search from SearchBar component
+const handleSearch = (e) => {
+  if (e.target.firstChild.value) {
+    getWeatherByCity(e.target.firstChild.value)
+  }
+}
+
+// Handle unit conversion
+const handleUnitChange = () => {
+  changeUnits(details)
+}
+
+// Get current year
+const getCurrentYear = () => {
+  const date = new Date()
+  currentYear.value = date.getFullYear()
+}
+
+// Handle user location and get weather
+const handleUserLocation = async () => {
+  try {
+    const position = await locateUserPosition()
+    await getWeatherByCoords(position)
+      } catch (error) {
+      console.error('Failed to get user location:', error.message || error)
+      // Fallback to a default city when location fails
+      console.log('Falling back to default city: London')
+      await getWeatherByCity('London')
+    }
+}
+
+// Lifecycle hooks
+onMounted(async () => {
+  getCurrentYear()
+  await handleUserLocation()
+})
 </script>
 
 <style>
-@import '../node_modules/simplebar/dist/simplebar.min.css';
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import "../node_modules/font-awesome/css/font-awesome.min.css";
-@import "./assets/css/owfont-regular.min.css";
 @import "./assets/css/styles.css";
 @import "./assets/css/animations.css";
 </style>

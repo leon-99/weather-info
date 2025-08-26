@@ -1,131 +1,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 
+/* Essential background and weather icon styles */
 .bg-container {
-    transition: all linear 0.5s;
-    min-height: 100vh;
-    background-attachment: fixed;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-::-webkit-scrollbar {
-    display: none;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all linear 0.5s;
 }
 
 .bg-container-inner {
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
 }
 
+/* Background images for different weather conditions */
 .clear-d {
-    background-image: url('../bg-images/clear-d-d.jpg');
+  background-image: url('../bg-images/clear-d-d.jpg');
 }
 
 .cloudy-d {
-    background-image: url('../bg-images/cloudy-d-d.jpg');
+  background-image: url('../bg-images/cloudy-d-d.jpg');
 }
 
 .clear-n {
-    background-image: url('../bg-images/clear-n-d.jpg');
+  background-image: url('../bg-images/clear-n-d.jpg');
 }
 
-
 .cloudy-n {
-    background-image: url('../bg-images/cloudy-n-d.jpg');
+  background-image: url('../bg-images/cloudy-n-d.jpg');
 }
 
 .rain-d {
-    background-image: url('../bg-images/rain-d-d.jpg');
+  background-image: url('../bg-images/rain-d-d.jpg');
 }
 
 .rain-n {
-    background-image: url('../bg-images/rain-n-d.jpg');
+  background-image: url('../bg-images/rain-n-d.jpg');
 }
 
 .snow-d {
-    background-image: url('../bg-images/snow-d-d.jpg');
+  background-image: url('../bg-images/snow-d-d.jpg');
 }
 
 .snow-n {
-    background-image: url('../bg-images/snow-n-d.jpg');
+  background-image: url('../bg-images/snow-n-d.jpg');
 }
 
 .foggy-d {
-    background-image: url('../bg-images/foggy-d-d.jpg');
+  background-image: url('../bg-images/foggy-d-d.jpg');
 }
 
 .foggy-n {
-    background-image: url('../bg-images/foggy-n-d.jpg');
+  background-image: url('../bg-images/foggy-n-d.jpg');
 }
 
-
-.alert-body-title {
-    color: orange;
+/* Weather icons */
+.owf {
+  font-family: 'owfont-regular';
 }
 
-.alert-modal {
-    font-family: 'Roboto Mono', monospace;
+.owf-4x {
+  font-size: 4em;
 }
 
-.close-single-alert-btn {
-    display: block;
-    margin: 0 auto;
-    border: none;
-    margin-top: 30px;
-    background-color: transparent;
-    color: orange;
-    padding: 5px 10px;
-    transition: all ease 0.5s;
+/* Container for main content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-.close-single-alert-close-btn:active {
-    outline: none;
+/* Main content area */
+.main {
+  padding-top: 20px;
 }
 
-.hr {
-    background: transparent;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
+/* Responsive background images */
 @media (max-width: 768px) {
-    .clear-d {
-        background-image: url('../bg-images/clear-d-m.jpg');
-    }
-    
-    .cloudy-d {
-        background-image: url('../bg-images/cloudy-d-m.jpg');
-    }
-    
-    .clear-n {
-        background-image: url('../bg-images/clear-n-m.jpg');
-    }
-    .cloudy-n {
-        background-image: url('../bg-images/cloudy-n-m.jpg');
-    }
-    
-    .rain-d {
-        background-image: url('../bg-images/rain-d-m.jpg');
-    }
-    
-    .rain-n {
-        background-image: url('../bg-images/rain-n-m.jpg');
-    }
-    
-    .foggy-d {
-        background-image: url('../bg-images/foggy-d-m.jpg');
-    }
-    
-    .foggy-n {
-        background-image: url('../bg-images/foggy-n-m.jpg');
-    }
-    
-    .snow-d {
-        background-image: url('../bg-images/snow-d-m.jpg');
-    }
-    
-    .snow-n {
-        background-image: url('../bg-images/snow-n-m.jpg');
-    }
+  .clear-d {
+    background-image: url('../bg-images/clear-d-m.jpg');
+  }
+  
+  .cloudy-d {
+    background-image: url('../bg-images/cloudy-d-m.jpg');
+  }
+  
+  .clear-n {
+    background-image: url('../bg-images/clear-n-m.jpg');
+  }
+  
+  .cloudy-n {
+    background-image: url('../bg-images/cloudy-n-d.jpg');
+  }
+  
+  .rain-d {
+    background-image: url('../bg-images/rain-d-m.jpg');
+  }
+  
+  .rain-n {
+    background-image: url('../bg-images/rain-n-m.jpg');
+  }
+  
+  .foggy-d {
+    background-image: url('../bg-images/foggy-d-m.jpg');
+  }
+  
+  .foggy-n {
+    background-image: url('../bg-images/foggy-n-d.jpg');
+  }
+  
+  .snow-d {
+    background-image: url('../bg-images/snow-d-m.jpg');
+  }
+  
+  .snow-n {
+    background-image: url('../bg-images/snow-n-d.jpg');
+  }
 }
